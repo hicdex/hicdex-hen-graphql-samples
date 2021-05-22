@@ -30,8 +30,18 @@
         </template>
       </zi-table-column>
       <zi-table-column label="title">
+
         <template slot-scope="scope">
-          {{ scope.row.token.title }}
+          <zi-tooltip>
+            {{ scope.row.token.title }}
+            <template v-slot:content>
+              <zi-avatar
+                v-if="scope.row.token.mime.startsWith('image/')"
+                :src="img(scope.row.token.artifact_uri)"
+                size="huge"
+                shape="square" />
+            </template>
+          </zi-tooltip>
         </template>
       </zi-table-column>
       <zi-table-column prop="token.mime" label="mime">
@@ -58,6 +68,13 @@
           2: 'Canceled',
         };
         return statuses[statusId];
+      },
+      img(ipfsUrl) {
+        const matched = ipfsUrl.match(/ipfs:\/\/(.*)/);
+        if (matched) {
+          return `https://cloudflare-ipfs.com/ipfs/${matched[1]}`;
+        }
+        return '';
       },
     },
     // watch: {

@@ -12,28 +12,46 @@
       hover>
       <zi-grid container :spacing="3" justify="center">
         <zi-grid v-for="objkt in objkts" :key="objkt.id" :xs="6">
-          <zi-card shadow>
+          <zi-card class="gallery-card" shadow>
+            <zi-image
+              v-if="objkt.mime.startsWith('image/')"
+              width="75%"
+              :src="img(objkt.artifact_uri)" size="huge" />
             <ul>
               <li>
-                link <a :href="link(objkt.id)">{{ link(objkt.id) }}</a>
+                <p>
+                  link <a :href="link(objkt.id)">{{ link(objkt.id) }}</a>
+                </p>
               </li>
               <li>
-                title {{ objkt.title }}
+                <p>
+                  title {{ objkt.title }}
+                </p>
               </li>
               <li>
-                description {{ objkt.description }}
+                <p>
+                  description {{ objkt.description }}
+                </p>
               </li>
               <li>
-                mime {{ objkt.mime }}
+                <p>
+                  mime {{ objkt.mime }}
+                </p>
               </li>
               <li>
-                file {{ objkt.artifact_uri }}
+                <p>
+                  file {{ objkt.artifact_uri }}
+                </p>
               </li>
               <li>
-                thumbnail {{ objkt.thumbnail_uri }}
+                <p>
+                  thumbnail {{ objkt.thumbnail_uri }}
+                </p>
               </li>
               <li>
-                editions {{ objkt.supply }}
+                <p>
+                  editions {{ objkt.supply }}
+                </p>
               </li>
             </ul>
 
@@ -47,6 +65,13 @@
   </div>
 </template>
 
+<style scoped>
+.gallery-card p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+</style>
 <script>
   export default {
     props: ['objkts', 'address'],
@@ -54,6 +79,13 @@
     methods: {
       link(id) {
         return `https://www.hicetnunc.xyz/objkt/${id}`;
+      },
+      img(ipfsUrl) {
+        const matched = ipfsUrl.match(/ipfs:\/\/(.*)/);
+        if (matched) {
+          return `https://cloudflare-ipfs.com/ipfs/${matched[1]}`;
+        }
+        return '';
       },
     },
   };

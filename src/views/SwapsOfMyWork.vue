@@ -46,6 +46,7 @@ export const QUERY = gql`
         mime
         description
         id
+        artifact_uri
       }
     }
   }
@@ -116,7 +117,7 @@ export default {
         this.error = JSON.stringify(error.message);
       },
       skip() {
-        return !this.address.length === 36;
+        return this.address.length !== 36;
       },
     },
   },
