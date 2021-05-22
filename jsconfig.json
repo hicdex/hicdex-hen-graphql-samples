@@ -1,0 +1,16 @@
+{
+  "include": [
+    "./src/**/*"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "public": [
+        "public/*"
+      ],
+      "@": [
+        "src/*"
+      ]
+    }
+  }
+}
