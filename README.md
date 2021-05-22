@@ -1,4 +1,4 @@
-# hen-graphql-samples
+# hicdex-hen-graphql-samples
 
 ## Project setup
 ```

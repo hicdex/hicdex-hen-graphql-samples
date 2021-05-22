@@ -14,12 +14,18 @@
       </zi-tabs-item>
     </zi-tabs>
     <SwapItem :swaps="filteredSwaps" :address="address" />
+    <div v-show="address">
+      <zi-spacer y="2" />
+      <h4>Using this query</h4>
+      <pre><code>{{ graphqlTemplate(query, address) }}</code></pre>
+    </div>
   </div>
 </template>
 
 <script>
 import gql from 'graphql-tag';
 import SwapItem from '../components/SwapItem.vue';
+import { graphqlTemplate1 } from '../utils';
 
 export const ME_ON_SECONDARY_MARKET = gql`
   query meOnSecondaryMarket($address: String!) {
@@ -59,6 +65,7 @@ export default {
         { label: 'For Sale', value: 'active' },
         { label: 'Sold', value: 'finished' },
       ],
+      query: ME_ON_SECONDARY_MARKET,
     };
   },
   computed: {
@@ -76,6 +83,7 @@ export default {
     },
   },
   methods: {
+    graphqlTemplate: graphqlTemplate1,
     filterResults(type) {
       if (type.value === 'active') {
         this.filterStatus = 'active';

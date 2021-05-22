@@ -14,6 +14,11 @@
       </zi-tabs-item>
     </zi-tabs>
     <SwapItem :swaps="filteredSwaps" :address="address" />
+    <div v-show="address">
+      <zi-spacer y="2" />
+      <h4>Using this query</h4>
+      <pre><code>{{ graphqlTemplate(query, address) }}</code></pre>
+    </div>
   </div>
 </template>
 
@@ -58,6 +63,7 @@ export default {
         { label: 'Sold', value: 'finished' },
         { label: 'Canceled', value: 'canceled' },
       ],
+      query: ME_ON_SECONDARY_MARKET,
     };
   },
   computed: {
