@@ -13,7 +13,8 @@
 
     <zi-grid container :spacing="3" justify="center">
       <zi-grid :xs="10" v-if="this.$route.name === 'home'">
-        <zi-spacer y="3" />
+        <zi-spacer y="2" />
+
         <zi-card shadow>
           <h4>hicdex</h4>
           <p>
@@ -29,7 +30,9 @@
             Each tool also prints usable JavaScript code that shows how to achieve the same result as the tool.
           </p>
         </zi-card>
-        <zi-spacer y="3" />
+
+        <zi-spacer y="2" />
+
         <zi-row gutter="15">
           <zi-col>
             <router-link to="/my-art-on-secondary-market">
@@ -54,7 +57,33 @@
             </router-link>
           </zi-col>
         </zi-row>
+
+        <zi-spacer y="1" />
+
+        <zi-row gutter="15">
+          <zi-col>
+            <router-link to="/creator-gallery">
+              <zi-card shadow>
+                <h4>Showcase your creations</h4>
+                <p>
+                  All your artworks in a single call. Some artists might want to display their creations on their website.
+                </p>
+              </zi-card>
+            </router-link>
+          </zi-col>
+          <zi-col>
+            <router-link to="/collector-gallery">
+              <zi-card shadow>
+                <h4>Showcase your collection</h4>
+                <p>
+                  Why not show your collection on your website, build a nice gallery is if you were an actually gallery (hint: you are)
+                </p>
+              </zi-card>
+            </router-link>
+          </zi-col>
+        </zi-row>
       </zi-grid>
+
       <zi-grid :xs="20" v-else >
         <router-view />
       </zi-grid>

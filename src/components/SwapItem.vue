@@ -1,40 +1,5 @@
 <template>
   <div>
-    <ul style="display: none">
-      <li v-for="objkt in swaps" v-bind:key="objkt.id">
-        <div v-if="objkt.is_public" class="userInfoPublic">
-          @{{ objkt.user.name }}
-        </div>
-        <div class="view">
-            <div class="round">
-              <input
-                type="checkbox"
-                id="objkt.token.id"
-                :checked="objkt.status === 1"
-              />
-              <label
-                htmlFor="objkt.price"></label>
-            </div>
-        </div>
-        <div class="labelContent">
-            <div class="objktLabel" v-if="objkt.status === 2">
-              <div>
-                <strike>{{ objkt.token.title }}</strike>
-                <p><a :href="link(objkt.token.id)">H=N</a></p>
-              </div>
-            </div>
-            <div v-else>
-              {{ objkt.token.title }}
-
-              <p><a :href="link(objkt.token.id)">H=N</a></p>
-            </div>
-            <div style="margin-left: auto">
-              {{ objkt.price / 1000000 }} xtz
-            </div>
-        </div>
-      </li>
-    </ul>
-
     <zi-note v-if="!address">
       Enter a wallet address above
     </zi-note>
