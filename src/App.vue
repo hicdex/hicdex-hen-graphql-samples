@@ -14,6 +14,22 @@
     <zi-grid container :spacing="3" justify="center">
       <zi-grid :xs="10" v-if="this.$route.name === 'home'">
         <zi-spacer y="3" />
+        <zi-card shadow>
+          <h4>hicdex</h4>
+          <p>
+            hicdex is a Tezos indexers focused on indexing <a href="https://hicetnunc.xyz" target="_blank">hic et nunc</a>'s
+            smart contracts activity.
+          </p>
+          <p>
+            The indexed data is made available by exposing a public <a href="https://www.graphql.com/tutorials/" target="_blank">GraphQL</a> endpoint.
+            Write queries on the <a href="https://api.hicdex.com/graphiql">GraphiQL explorer</a> or use the endpoint <code>https://api.hicdex.com/v1/graphql</code>.
+          </p>
+          <p>
+            Below are some sample tools built to showcase <strong>hicdex</strong> and to help you build your own tools based on H=N's data.<br>
+            Each tool also prints usable JavaScript code that shows how to achieve the same result as the tool.
+          </p>
+        </zi-card>
+        <zi-spacer y="3" />
         <zi-row gutter="15">
           <zi-col>
             <router-link to="/my-art-on-secondary-market">
