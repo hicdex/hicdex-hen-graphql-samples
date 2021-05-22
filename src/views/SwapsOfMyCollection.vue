@@ -25,6 +25,7 @@
 <script>
 import gql from 'graphql-tag';
 import SwapItem from '../components/SwapItem.vue';
+import { graphqlTemplate1 } from '../utils';
 
 export const ME_ON_SECONDARY_MARKET = gql`
   query mySecondaryMarketSales($address: String!) {
@@ -81,6 +82,7 @@ export default {
     },
   },
   methods: {
+    graphqlTemplate: graphqlTemplate1,
     filterResults(type) {
       if (type.value === 'active') {
         this.filterStatus = 'active';
