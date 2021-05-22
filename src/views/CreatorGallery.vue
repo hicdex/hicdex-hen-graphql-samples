@@ -7,10 +7,10 @@
       </div>
     </div>
     <div v-if="error">{{ error }}</div>
-    <zi-input placeholder="tz…" v-model="address" size="medium" autofocus style="width: 400px" />
+    <zi-input placeholder="tz… or alice.tez" v-model="addressInput" size="medium" autofocus style="width: 400px" />
     <zi-spacer y="2" />
     <Gallery :objkts="hic_et_nunc_token" :address="address" />
-    <div v-show="address">
+    <div v-show="addressInput">
       <zi-spacer y="2" />
       <h4>Using this query</h4>
       <pre><code>{{ graphqlTemplate(query, address) }}</code></pre>
@@ -21,7 +21,7 @@
 <script>
 import gql from 'graphql-tag';
 import Gallery from '../components/Gallery.vue';
-import { graphqlTemplate1 } from '../utils';
+import { getAddress, graphqlTemplate1 } from '../utils';
 
 export const QUERY = gql`
   query creatorGallery($address: String!) {
@@ -49,12 +49,20 @@ export default {
   },
   data() {
     return {
+      addressInput: '',
       address: '',
       filterStatus: 'all',
       hic_et_nunc_token: [],
       error: null,
       query: QUERY,
     };
+  },
+  watch: {
+    addressInput(newVal) {
+       getAddress(newVal).then((address) => {
+         this.address = address;
+       });
+    },
   },
   methods: {
     graphqlTemplate: graphqlTemplate1,
@@ -71,7 +79,7 @@ export default {
         this.error = JSON.stringify(error.message);
       },
       skip() {
-        return !this.address;
+        return !this.address.length === 36;
       },
     },
   },

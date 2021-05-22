@@ -7,14 +7,14 @@
       </div>
     </div>
     <div v-if="error">{{ error }}</div>
-    <zi-input placeholder="tz…" v-model="address" size="medium" autofocus style="width: 400px" />
+    <zi-input placeholder="tz… or alice.tez" v-model="addressInput" size="medium" autofocus style="width: 400px" />
     <zi-spacer y="2" />
     <zi-tabs @label-selected="filterResults">
       <zi-tabs-item v-for="(item, index) in filters" :label="item.label" :value="item.value" :key="item.value + index">
       </zi-tabs-item>
     </zi-tabs>
     <SwapItem :swaps="filteredSwaps" :address="address" />
-    <div v-show="address">
+    <div v-show="addressInput">
       <zi-spacer y="2" />
       <h4>Using this query</h4>
       <pre><code>{{ graphqlTemplate(query, address) }}</code></pre>
@@ -25,9 +25,9 @@
 <script>
 import gql from 'graphql-tag';
 import SwapItem from '../components/SwapItem.vue';
-import { graphqlTemplate1 } from '../utils';
+import { getAddress, graphqlTemplate1 } from '../utils';
 
-export const ME_ON_SECONDARY_MARKET = gql`
+export const QUERY = gql`
   query meOnSecondaryMarket($address: String!) {
     hic_et_nunc_swap(
       where: {
@@ -56,6 +56,7 @@ export default {
   },
   data() {
     return {
+      addressInput: '',
       address: '',
       filterStatus: 'all',
       hic_et_nunc_swap: [],
@@ -65,7 +66,7 @@ export default {
         { label: 'For Sale', value: 'active' },
         { label: 'Sold', value: 'finished' },
       ],
-      query: ME_ON_SECONDARY_MARKET,
+      query: QUERY,
     };
   },
   computed: {
@@ -80,6 +81,13 @@ export default {
         return this.hic_et_nunc_swap.filter((swap) => swap.status === 2);
       }
       return this.hic_et_nunc_swap;
+    },
+  },
+  watch: {
+    addressInput(newVal) {
+       getAddress(newVal).then((address) => {
+         this.address = address;
+       });
     },
   },
   methods: {
@@ -98,7 +106,7 @@ export default {
   },
   apollo: {
     hic_et_nunc_swap: {
-      query: ME_ON_SECONDARY_MARKET,
+      query: QUERY,
       variables() {
         return {
           address: this.address,
@@ -108,7 +116,7 @@ export default {
         this.error = JSON.stringify(error.message);
       },
       skip() {
-        return !this.address;
+        return !this.address.length === 36;
       },
     },
   },
