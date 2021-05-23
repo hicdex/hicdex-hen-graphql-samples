@@ -2,7 +2,7 @@
   <div id="app">
     <a
       aria-label="View source on GitHub"
-      href="https://github.com/vhf/hicdex-hen-graphql-samples"
+      href="https://github.com/hicdex/hicdex-hen-graphql-samples"
       class="github-corner">
       <svg viewBox="0 0 250 250" style="fill:#151513; color:#fff; border: 0;" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>

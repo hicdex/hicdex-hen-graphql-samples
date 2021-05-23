@@ -66,6 +66,7 @@ export default {
         { label: 'All', value: 'all' },
         { label: 'For Sale', value: 'active' },
         { label: 'Sold', value: 'finished' },
+        { label: 'Query', value: 'query' },
       ],
       query: QUERY,
     };
