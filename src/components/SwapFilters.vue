@@ -21,6 +21,7 @@
           { label: 'For Sale', value: 'active' },
           { label: 'Sold', value: 'finished' },
           { label: 'Canceled', value: 'canceled' },
+          { label: 'Query', value: 'query' },
         ],
       };
     },
