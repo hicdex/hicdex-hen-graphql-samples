@@ -12,7 +12,7 @@
     </a>
 
     <zi-grid container :spacing="3" justify="center">
-      <zi-grid :xs="10" v-if="this.$route.name === 'home'">
+      <zi-grid :xs="20" :lg="10" v-if="this.$route.name === 'home'">
         <zi-spacer y="2" />
 
         <zi-card shadow>
