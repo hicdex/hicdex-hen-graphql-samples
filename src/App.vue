@@ -18,10 +18,10 @@
         <zi-card shadow>
           <h1>hicdex</h1>
           <h3>
-            a blockchain indexer and GraphQL API for <a href="https://hicetnunc.xyz" target="_blank">hic et nunc</a>
+            a blockchain indexer and GraphQL API for hic et nunc
           </h3>
           <p>
-            hicdex is a Tezos indexers focused on indexing <a href="https://hicetnunc.xyz" target="_blank">hic et nunc</a>'s
+            hicdex is a Tezos indexers focused on indexing <a href="https://hicetnunc.xyz" target="_blank">hicetnunc.xyz</a>'s
             smart contracts activity. The indexed data is made available by exposing a public <a href="https://www.graphql.com/tutorials/" target="_blank">GraphQL</a> endpoint.
           </p>
         </zi-card>
@@ -36,7 +36,7 @@
           </p>
           <h5>Sample Projects</h5>
           <p>
-            Below are some sample tools built to showcase <strong>hicdex</strong> and to help you build your own tools based on H=N's data.
+            Below are some sample tools built to showcase hicdex and to help you build your own tools based on H=N's data.
             Each tool also prints usable JavaScript code that shows how to achieve the same result as the tool.
           </p>
         </zi-card>
