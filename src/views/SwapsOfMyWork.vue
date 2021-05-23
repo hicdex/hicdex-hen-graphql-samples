@@ -72,6 +72,9 @@ export default {
   },
   computed: {
     filteredSwaps() {
+      if (this.filterStatus === 'query') {
+        return [];
+      }
       if (this.filterStatus === 'active') {
         return this.hic_et_nunc_swap.filter((swap) => swap.status === 0);
       }
@@ -94,7 +97,9 @@ export default {
   methods: {
     graphqlTemplate: graphqlTemplate1,
     filterResults(type) {
-      if (type.value === 'active') {
+      if (type.value === 'query') {
+        this.filterStatus = 'query';
+      } else if (type.value === 'active') {
         this.filterStatus = 'active';
       } else if (type.value === 'finished') {
         this.filterStatus = 'finished';

@@ -12,26 +12,36 @@
     </a>
 
     <zi-grid container :spacing="3" justify="center">
-      <zi-grid :xs="10" v-if="this.$route.name === 'home'">
+      <zi-grid :xs="20" :lg="10" v-if="this.$route.name === 'home'">
         <zi-spacer y="2" />
 
         <zi-card shadow>
-          <h4>hicdex</h4>
+          <h1>hicdex</h1>
+          <h3>
+            a blockchain indexer and GraphQL API for hic et nunc
+          </h3>
           <p>
-            hicdex is a Tezos indexers focused on indexing <a href="https://hicetnunc.xyz" target="_blank">hic et nunc</a>'s
-            smart contracts activity.
+            hicdex is a Tezos indexers focused on indexing <a href="https://hicetnunc.xyz" target="_blank">hicetnunc.xyz</a>'s
+            smart contracts activity. The indexed data is made available by exposing a public <a href="https://www.graphql.com/tutorials/" target="_blank">GraphQL</a> endpoint.
           </p>
+        </zi-card>
+
+        <zi-spacer y="1" />
+
+        <zi-card shadow>
+          <h4>Getting Started</h4>
           <p>
-            The indexed data is made available by exposing a public <a href="https://www.graphql.com/tutorials/" target="_blank">GraphQL</a> endpoint.
-            Write queries on the <a href="https://api.hicdex.com/graphiql">GraphiQL explorer</a> or use the endpoint <code>https://api.hicdex.com/v1/graphql</code>.
+            Write queries on the <a href="https://api.hicdex.com/graphiql" style="font-weight: 700">GraphiQL explorer</a>
+            <br>or use the endpoint <code style="font-weight: 700">https://api.hicdex.com/v1/graphql</code>
           </p>
+          <h5>Sample Projects</h5>
           <p>
-            Below are some sample tools built to showcase <strong>hicdex</strong> and to help you build your own tools based on H=N's data.<br>
+            Below are some sample tools built to showcase hicdex and to help you build your own tools based on H=N's data.
             Each tool also prints usable JavaScript code that shows how to achieve the same result as the tool.
           </p>
         </zi-card>
 
-        <zi-spacer y="2" />
+        <zi-spacer y="1" />
 
         <zi-row gutter="15">
           <zi-col>

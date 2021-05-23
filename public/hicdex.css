@@ -1,3 +1,9 @@
+body {
+  --geist-background: #cccccc;
+  min-height: 100vh;
+  min-height: calc(100vh + 12px);
+}
+
 .overlay {
   height: 100%;
   width: 100%;
@@ -25,19 +31,51 @@
   margin: auto;
 }
 
+.zi-card {
+  
+  background: white;
+}
+.zi-card p {
+  color: black;
+}
+
+.zi-input,
+.zi-note,
+pre
+ {
+  background: white;
+}
+
+code:after, code:before {
+  content: "";
+}
+
+table tr td {
+  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+pre {
+  font-size: 1rem;
+}
+
+.table-row {
+  background: #f3f3f3;
+}
+
 .github-corner {
-  height: 120px;
+  height: 100px;
   display: block;
   position: absolute;
-  top: 0;
-  right: -12px;
+  top: 3px;
+  right: -9px;
   overflow: hidden;
   z-index: 2;
 }
 
 .github-corner svg {
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
 }
 
 .github-corner:hover .octo-arm {
