@@ -13,7 +13,7 @@
     <div v-show="addressInput">
       <zi-spacer y="2" />
       <h4>Using this query</h4>
-      <pre><code>{{ graphqlTemplate(query, address) }}</code></pre>
+      <pre><code>{{ graphqlTemplate(query, {address}) }}</code></pre>
     </div>
   </div>
 </template>
@@ -47,6 +47,11 @@ export default {
   components: {
     Gallery,
   },
+  mounted() {
+    if (this.$route.query.addr) {
+      this.address = this.$route.query.addr;
+    }
+  },
   data() {
     return {
       addressInput: '',
@@ -60,6 +65,9 @@ export default {
   watch: {
     addressInput(newVal) {
        getAddress(newVal).then((address) => {
+         if (address.length === 36) {
+          this.$router.push({ name: 'collector-gallery', query: { address } });
+         }
          this.address = address;
        });
     },

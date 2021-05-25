@@ -1,4 +1,4 @@
-export function graphqlTemplate1(query, address) {
+export function graphqlTemplate1(query, params) {
   return `
 const query = \`${query.loc.source.body}\`;
 
@@ -19,7 +19,7 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 }
 
 async function doFetch() {
-  const { errors, data } = await fetchGraphQL(query, "${query.definitions[0].name.value}", {"address": "${address}"});
+  const { errors, data } = await fetchGraphQL(query, "${query.definitions[0].name.value}", ${JSON.stringify(params, null, 0)});
   if (errors) {
     console.error(errors);
   }

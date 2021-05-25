@@ -46,7 +46,7 @@
         <zi-row gutter="15">
           <zi-col>
             <router-link to="/my-art-on-secondary-market">
-              <zi-card shadow>
+              <zi-card shadow class="home-card">
                 <h4>Your OBJKTS on the secondary market</h4>
                 <p>
                   Which artworks of yours are either on sale on the secondary market
@@ -57,7 +57,7 @@
           </zi-col>
           <zi-col>
             <router-link to="/my-secondary-market-sales">
-              <zi-card shadow>
+              <zi-card shadow class="home-card">
                 <h4>Your sales on the secondary market</h4>
                 <p>
                   What you have bought and are either trying to sell on the secondary market
@@ -72,8 +72,23 @@
 
         <zi-row gutter="15">
           <zi-col>
+            <router-link to="/price-history">
+              <zi-card shadow class="home-card">
+                <h4>OBJKT price history</h4>
+                <p>
+                  Explore the price history of an objkt.
+                </p>
+              </zi-card>
+            </router-link>
+          </zi-col>
+        </zi-row>
+
+        <zi-spacer y="1" />
+
+        <zi-row gutter="15">
+          <zi-col>
             <router-link to="/creator-gallery">
-              <zi-card shadow>
+              <zi-card shadow class="home-card">
                 <h4>Showcase your creations</h4>
                 <p>
                   All your artworks in a single call. Some artists might want to display their creations on their website.
@@ -83,10 +98,10 @@
           </zi-col>
           <zi-col>
             <router-link to="/collector-gallery">
-              <zi-card shadow>
+              <zi-card shadow class="home-card">
                 <h4>Showcase your collection</h4>
                 <p>
-                  Why not show your collection on your website, build a nice gallery is if you were an actually gallery (hint: you are)
+                  Why not show your collection on your website, build a nice gallery as if you were an actuall gallery (hint: you are).
                 </p>
               </zi-card>
             </router-link>

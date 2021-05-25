@@ -5,6 +5,7 @@ import SwapsOfMyWork from './views/SwapsOfMyWork.vue';
 import SwapsOfMyCollection from './views/SwapsOfMyCollection.vue';
 import CreatorGallery from './views/CreatorGallery.vue';
 import CollectorGallery from './views/CollectorGallery.vue';
+import PriceHistory from './views/PriceHistory.vue';
 
 Vue.use(Router);
 
@@ -36,6 +37,11 @@ const router = new Router({
       path: '/collector-gallery',
       name: 'collector-gallery',
       component: CollectorGallery,
+    },
+    {
+      path: '/price-history',
+      name: 'price-history',
+      component: PriceHistory,
     },
   ],
 });

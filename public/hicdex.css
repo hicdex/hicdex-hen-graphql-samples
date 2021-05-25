@@ -32,7 +32,7 @@ body {
 }
 
 .zi-card {
-  
+
   background: white;
 }
 .zi-card p {
@@ -61,6 +61,14 @@ pre {
 
 .table-row {
   background: #f3f3f3;
+}
+
+a.primary-sale {
+  font-weight: 300;
+}
+
+.home-card {
+  min-height: 168px;
 }
 
 .github-corner {

@@ -17,7 +17,7 @@
     <div v-show="addressInput">
       <zi-spacer y="2" />
       <h4>Using this query</h4>
-      <pre><code>{{ graphqlTemplate(query, address) }}</code></pre>
+      <pre><code>{{ graphqlTemplate(query, {address}) }}</code></pre>
     </div>
   </div>
 </template>
@@ -55,6 +55,11 @@ export default {
   components: {
     SwapItem,
   },
+  mounted() {
+    if (this.$route.query.addr) {
+      this.address = this.$route.query.addr;
+    }
+  },
   data() {
     return {
       addressInput: '',
@@ -71,6 +76,16 @@ export default {
       query: QUERY,
     };
   },
+  watch: {
+    addressInput(newVal) {
+       getAddress(newVal).then((address) => {
+         if (address.length === 36) {
+          this.$router.push({ name: 'my-art-on-secondary-market', query: { address } });
+         }
+         this.address = address;
+       });
+    },
+  },
   computed: {
     filteredSwaps() {
       if (this.filterStatus === 'query') {
@@ -86,13 +101,6 @@ export default {
         return this.hic_et_nunc_swap.filter((swap) => swap.status === 2);
       }
       return this.hic_et_nunc_swap;
-    },
-  },
-  watch: {
-    addressInput(newVal) {
-       getAddress(newVal).then((address) => {
-         this.address = address;
-       });
     },
   },
   methods: {
