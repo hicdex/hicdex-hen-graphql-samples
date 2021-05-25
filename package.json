@@ -14,13 +14,14 @@
     "apollo-client": "2.6.10",
     "apollo-link-http": "1.5.17",
     "apollo-link-ws": "1.0.20",
+    "buefy": "^0.9.7",
+    "core-js": "^3.6.5",
     "graphql": "14.5.8",
     "graphql-tag": "^2.10.1",
-    "core-js": "^3.6.5",
     "subscriptions-transport-ws": "0.9.16",
+    "vue": "^2.6.11",
     "vue-apollo": "3.0.2",
-    "vue-router": "^3.5.1",
-    "vue": "^2.6.11"
+    "vue-router": "^3.5.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

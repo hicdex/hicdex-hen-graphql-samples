@@ -1,22 +1,22 @@
 <template>
   <div>
-    <zi-spacer y="1" />
-    <div class="overlay" v-if="$apollo.queries.hic_et_nunc_swap.loading">
-      <div class="overlay-content">
-        <zi-spinner size="big" />
-      </div>
-    </div>
+    <b-loading :is-full-page="true" v-model="$apollo.queries.hic_et_nunc_swap.loading" :can-cancel="false"></b-loading>
+
     <div v-if="error">{{ error }}</div>
-    <zi-input placeholder="tz… or alice.tez" v-model="addressInput" size="medium" autofocus style="width: 400px" />
-    <zi-spacer y="2" />
-    <zi-tabs @label-selected="filterResults">
-      <zi-tabs-item v-for="(item, index) in filters" :label="item.label" :value="item.value" :key="item.value + index">
-      </zi-tabs-item>
-    </zi-tabs>
+    <b-field>
+      <b-input placeholder="tz… or alice.tez" v-model="addressInput" autofocus></b-input>
+    </b-field>
+    <b-tabs v-model="filterStatus">
+      <template v-for="filter in filters">
+        <b-tab-item
+          :key="filter.value"
+          :value="filter.value"
+          :label="filter.label">
+        </b-tab-item>
+      </template>
+    </b-tabs>
     <SwapItem :swaps="filteredSwaps" :address="address" />
-    <div v-show="addressInput">
-      <zi-spacer y="2" />
-      <h4>Using this query</h4>
+    <div v-show="addressInput && filterStatus === 'query'">
       <pre><code>{{ graphqlTemplate(query, {address}) }}</code></pre>
     </div>
   </div>
@@ -25,7 +25,7 @@
 <script>
 import gql from 'graphql-tag';
 import SwapItem from '../components/SwapItem.vue';
-import { getAddress, graphqlTemplate1 } from '../utils';
+import { getAddress, graphqlTemplate } from '../utils';
 
 export const QUERY = gql`
   query meOnSecondaryMarket($address: String!) {
@@ -56,8 +56,9 @@ export default {
     SwapItem,
   },
   mounted() {
-    if (this.$route.query.addr) {
-      this.address = this.$route.query.addr;
+    if (this.$route.query.address) {
+      this.address = this.$route.query.address;
+      this.addressInput = this.address;
     }
   },
   data() {
@@ -79,7 +80,7 @@ export default {
   watch: {
     addressInput(newVal) {
        getAddress(newVal).then((address) => {
-         if (address.length === 36) {
+         if (address.length === 36 && this.address !== address) {
           this.$router.push({ name: 'my-art-on-secondary-market', query: { address } });
          }
          this.address = address;
@@ -104,20 +105,7 @@ export default {
     },
   },
   methods: {
-    graphqlTemplate: graphqlTemplate1,
-    filterResults(type) {
-      if (type.value === 'query') {
-        this.filterStatus = 'query';
-      } else if (type.value === 'active') {
-        this.filterStatus = 'active';
-      } else if (type.value === 'finished') {
-        this.filterStatus = 'finished';
-      } else if (type.value === 'canceled') {
-        this.filterStatus = 'canceled';
-      } else {
-        this.filterStatus = 'all';
-      }
-    },
+    graphqlTemplate,
   },
   apollo: {
     hic_et_nunc_swap: {

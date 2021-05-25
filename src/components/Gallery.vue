@@ -3,64 +3,71 @@
     <zi-note v-if="!address">
       Enter a wallet address above
     </zi-note>
-    <p v-else-if="!objkts.length">
-      --
-    </p>
+    <p v-else-if="!objkts.length"></p>
     <div
       v-else
       :data="objkts"
       hover>
-      <zi-grid container :spacing="3" justify="center">
-        <zi-grid v-for="objkt in objkts" :key="objkt.id" :xs="6">
-          <zi-card class="gallery-card" shadow>
-            <zi-image
-              v-if="objkt.mime.startsWith('image/')"
-              width="75%"
-              :src="img(objkt.artifact_uri)" size="huge" />
-            <ul>
-              <li>
-                <p>
-                  link <a :href="link(objkt.id)">{{ link(objkt.id) }}</a>
-                </p>
-              </li>
-              <li>
-                <p>
-                  title {{ objkt.title }}
-                </p>
-              </li>
-              <li>
-                <p>
-                  description {{ objkt.description }}
-                </p>
-              </li>
-              <li>
-                <p>
-                  mime {{ objkt.mime }}
-                </p>
-              </li>
-              <li>
-                <p>
-                  file {{ objkt.artifact_uri }}
-                </p>
-              </li>
-              <li>
-                <p>
-                  thumbnail {{ objkt.thumbnail_uri }}
-                </p>
-              </li>
-              <li>
-                <p>
-                  editions {{ objkt.supply }}
-                </p>
-              </li>
-            </ul>
+      <div v-for="(objkts, index) in group" :key="index" class="tile is-ancestor">
+        <div class="tile is-parent is-4" v-for="objkt in objkts" :key="objkt.id">
+          <article class="tile is-child  card">
+            <header class="card-header">
+              <p class="card-header-title">
+                {{ objkt.title }}
+              </p>
+            </header>
+            <div class="card-image" v-if="objkt.mime.startsWith('image/')">
+              <figure class="image">
+                <img :src="img(objkt.artifact_uri)" :alt="objkt.title">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <ul>
+                  <li>
+                    <p>
+                      link <a :href="link(objkt.id)">{{ link(objkt.id) }}</a>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      description {{ objkt.description }}
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      mime {{ objkt.mime }}
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      file {{ objkt.artifact_uri }}
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      thumbnail {{ objkt.thumbnail_uri }}
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      editions {{ objkt.supply }}
+                    </p>
+                  </li>
+                </ul>
 
-            <zi-tag v-for="{tag} in objkt.token_tags" :key="tag.tag" type="danger">
-              {{ tag.tag }}
-            </zi-tag>
-          </zi-card>
-        </zi-grid>
-      </zi-grid>
+                <time :datetime="objkt.timestamp">{{ objkt.timestamp }}</time>
+
+                <b-field>
+                  <b-tag rounded v-for="{tag} in objkt.token_tags" :key="tag.tag">
+                    {{ tag.tag }}
+                  </b-tag>
+                </b-field>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -76,6 +83,15 @@
   export default {
     props: ['objkts', 'address'],
     mounted() {},
+    computed: {
+      group() {
+        const groups = [];
+        for (let i = 0; i < this.objkts.length; i += 3) {
+          groups.push(this.objkts.slice(i, i + 3));
+        }
+        return groups;
+      },
+    },
     methods: {
       link(id) {
         return `https://www.hicetnunc.xyz/objkt/${id}`;

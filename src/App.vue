@@ -11,108 +11,108 @@
       </svg>
     </a>
 
-    <zi-grid container :spacing="3" justify="center">
-      <zi-grid :xs="20" :lg="10" v-if="this.$route.name === 'home'">
-        <zi-spacer y="2" />
+    <div
+      v-if="this.$route.name === 'home'"
+      class="container">
+      <section class="hero is-info">
+        <div class="hero-body">
+          <h1 class="title is-2">
+            hicdex
+          </h1>
 
-        <zi-card shadow>
-          <h1>hicdex</h1>
-          <h3>
-            a blockchain indexer and GraphQL API for hic et nunc
-          </h3>
-          <p>
-            hicdex is a Tezos indexers focused on indexing <a href="https://hicetnunc.xyz" target="_blank">hicetnunc.xyz</a>'s
-            smart contracts activity. The indexed data is made available by exposing a public <a href="https://www.graphql.com/tutorials/" target="_blank">GraphQL</a> endpoint.
-          </p>
-        </zi-card>
+          <h2 class="subtitle">a blockchain indexer and GraphQL API for hic et nunc</h2>
 
-        <zi-spacer y="1" />
+          <div class="content">
+            <p>
+              hicdex is a Tezos indexers focused on indexing <a href="https://hicetnunc.xyz" target="_blank">hicetnunc.xyz</a>'s
+              smart contracts activity. The indexed data is made available by exposing a public <a href="https://www.graphql.com/tutorials/" target="_blank">GraphQL</a> endpoint.
+            </p>
 
-        <zi-card shadow>
-          <h4>Getting Started</h4>
-          <p>
-            Write queries on the <a href="https://api.hicdex.com/graphiql" style="font-weight: 700">GraphiQL explorer</a>
-            <br>or use the endpoint <code style="font-weight: 700">https://api.hicdex.com/v1/graphql</code>
-          </p>
-          <h5>Sample Projects</h5>
-          <p>
-            Below are some sample tools built to showcase hicdex and to help you build your own tools based on H=N's data.
-            Each tool also prints usable JavaScript code that shows how to achieve the same result as the tool.
-          </p>
-        </zi-card>
+            <h2 class="subtitle">Getting Started</h2>
 
-        <zi-spacer y="1" />
+            <p>
+              Write queries on the <a href="https://api.hicdex.com/graphiql" style="font-weight: 700">GraphiQL explorer</a>
+              or use the endpoint <code style="font-weight: 700">https://api.hicdex.com/v1/graphql</code>
+            </p>
 
-        <zi-row gutter="15">
-          <zi-col>
-            <router-link to="/my-art-on-secondary-market">
-              <zi-card shadow class="home-card">
-                <h4>Your OBJKTS on the secondary market</h4>
-                <p>
-                  Which artworks of yours are either on sale on the secondary market
-                  or have been sold on the secondary market.
-                </p>
-              </zi-card>
-            </router-link>
-          </zi-col>
-          <zi-col>
-            <router-link to="/my-secondary-market-sales">
-              <zi-card shadow class="home-card">
-                <h4>Your sales on the secondary market</h4>
-                <p>
-                  What you have bought and are either trying to sell on the secondary market
-                  or have sold on the secondary market.
-                </p>
-              </zi-card>
-            </router-link>
-          </zi-col>
-        </zi-row>
+            <h2 class="subtitle">Sample Projects</h2>
+            <p>
+              Below are some sample tools built to showcase hicdex and to help you build your own tools based on H=N's data.
+              Each tool also prints usable JavaScript code that shows how to achieve the same result as the tool.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <zi-spacer y="1" />
+      <div class="columns home-cards">
+        <div class="column is-half">
+          <router-link to="/my-art-on-secondary-market">
+            <article class="box home-card">
+              <p class="title is-4">Your OBJKTS on the secondary market</p>
+              <p>
+                Which artworks of yours are either on sale on the secondary market
+                or have been sold on the secondary market.
+              </p>
+            </article>
+          </router-link>
+        </div>
 
-        <zi-row gutter="15">
-          <zi-col>
-            <router-link to="/price-history">
-              <zi-card shadow class="home-card">
-                <h4>OBJKT price history</h4>
-                <p>
-                  Explore the price history of an objkt.
-                </p>
-              </zi-card>
-            </router-link>
-          </zi-col>
-        </zi-row>
+        <div class="column is-half">
+          <router-link to="/my-secondary-market-sales">
+            <article class="box home-card">
+              <p class="title is-4">Your sales on the secondary market</p>
+              <p>
+                What you have bought and are either trying to sell on the secondary market
+                or have sold on the secondary market.
+              </p>
+            </article>
+          </router-link>
+        </div>
+      </div>
 
-        <zi-spacer y="1" />
+      <div class="columns">
+        <div class="column is-half">
+          <router-link to="/price-history">
+            <article class="box home-card">
+              <p class="title is-4">OBJKT price history</p>
+              <p>
+                Explore the price history of an OBJKT.
+              </p>
+            </article>
+          </router-link>
+        </div>
 
-        <zi-row gutter="15">
-          <zi-col>
-            <router-link to="/creator-gallery">
-              <zi-card shadow class="home-card">
-                <h4>Showcase your creations</h4>
-                <p>
-                  All your artworks in a single call. Some artists might want to display their creations on their website.
-                </p>
-              </zi-card>
-            </router-link>
-          </zi-col>
-          <zi-col>
-            <router-link to="/collector-gallery">
-              <zi-card shadow class="home-card">
-                <h4>Showcase your collection</h4>
-                <p>
-                  Why not show your collection on your website, build a nice gallery as if you were an actuall gallery (hint: you are).
-                </p>
-              </zi-card>
-            </router-link>
-          </zi-col>
-        </zi-row>
-      </zi-grid>
+        <div class="column is-half">
+          <router-link to="/creator-gallery">
+            <article class="box home-card">
+              <p class="title is-4">Showcase your creations</p>
+              <p>
+                All your artworks in a single call. Some artists might want to display their creations on their website.
+              </p>
+            </article>
+          </router-link>
+        </div>
+      </div>
 
-      <zi-grid :xs="20" v-else >
-        <router-view />
-      </zi-grid>
-    </zi-grid>
+      <div class="columns">
+        <div class="column is-half">
+          <router-link to="/collector-gallery">
+            <article class="box home-card">
+              <p class="title is-4">Showcase your collection</p>
+              <p>
+                Why not show your collection on your website, build a nice gallery as if you were an actuall gallery (hint: you are).
+              </p>
+            </article>
+          </router-link>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container" v-else >
+      <router-view />
+    </div>
+
   </div>
 </template>
 

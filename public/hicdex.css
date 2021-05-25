@@ -1,8 +1,7 @@
-body {
-  --geist-background: #cccccc;
+/* body {
   min-height: 100vh;
   min-height: calc(100vh + 12px);
-}
+} */
 
 .overlay {
   height: 100%;
@@ -31,21 +30,6 @@ body {
   margin: auto;
 }
 
-.zi-card {
-
-  background: white;
-}
-.zi-card p {
-  color: black;
-}
-
-.zi-input,
-.zi-note,
-pre
- {
-  background: white;
-}
-
 code:after, code:before {
   content: "";
 }
@@ -67,6 +51,10 @@ a.primary-sale {
   font-weight: 300;
 }
 
+.home-cards {
+  margin-top: 16px;
+}
+
 .home-card {
   min-height: 168px;
 }
@@ -75,8 +63,8 @@ a.primary-sale {
   height: 100px;
   display: block;
   position: absolute;
-  top: 3px;
-  right: -9px;
+  top: 0px;
+  right: 0px;
   overflow: hidden;
   z-index: 2;
 }

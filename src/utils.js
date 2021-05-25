@@ -1,4 +1,4 @@
-export function graphqlTemplate1(query, params) {
+export function graphqlTemplate(query, params) {
   return `
 const query = \`${query.loc.source.body}\`;
 

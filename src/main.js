@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import GeistUI from '@geist-ui/vue';
-import '@geist-ui/vue/dist/geist-ui.css';
+import Buefy from 'buefy';
+import 'buefy/dist/buefy.css';
 import '../public/hicdex.css';
 import VueApollo from 'vue-apollo';
 
@@ -12,6 +13,8 @@ import App from './App.vue';
 import router from './router';
 
 Vue.use(VueApollo);
+
+Vue.use(Buefy);
 Vue.use(GeistUI);
 
 Vue.config.productionTip = false;

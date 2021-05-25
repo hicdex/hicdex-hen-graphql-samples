@@ -1,55 +1,45 @@
 <template>
   <div>
-    <zi-note v-if="!address">
+    <div v-if="!address">
       Enter a wallet address above
-    </zi-note>
-    <p v-else-if="!swaps.length">
-      --
-    </p>
-    <zi-table
-      v-else
-      :data="swaps"
-      hover>
-      <zi-table-column prop="price" label="price" width="150">
-        <template slot-scope="scope">
-          <p style="text-align: right;">
-            {{ (scope.row.price / 1000000).toFixed(2) }}
-          </p>
-        </template>
-      </zi-table-column>
-      <zi-table-column prop="status" label="status" width="150">
-        <template slot-scope="scope">
-          {{ statusText(scope.row.status) }}
-        </template>
-      </zi-table-column>
-      <zi-table-column label="OBJKT">
-        <template slot-scope="scope">
-          <a :href="link(scope.row.token.id)">
-            {{ link(scope.row.token.id) }}
-          </a>
-        </template>
-      </zi-table-column>
-      <zi-table-column label="title">
+    </div>
+    <p v-else-if="!swaps.length"></p>
 
-        <template slot-scope="scope">
-          <zi-tooltip>
-            {{ scope.row.token.title }}
-            <template v-slot:content>
-              <zi-avatar
-                v-if="scope.row.token.mime.startsWith('image/')"
-                :src="img(scope.row.token.artifact_uri)"
-                size="huge"
-                shape="square" />
-            </template>
-          </zi-tooltip>
-        </template>
-      </zi-table-column>
-      <zi-table-column prop="token.mime" label="mime">
-        <template slot-scope="scope">
-          {{ scope.row.token.mime }}
-        </template>
-      </zi-table-column>
-    </zi-table>
+    <b-table
+      v-else
+      :data="swaps">
+      <b-table-column field="price" label="price" sortable numeric v-slot="props">
+        {{ (props.row.price / 1000000).toFixed(2) }}
+      </b-table-column>
+      <b-table-column field="status" label="status" sortable v-slot="props">
+        {{ statusText(props.row.status) }}
+      </b-table-column>
+      <b-table-column label="ID" field="token.id" numeric sortable v-slot="props">
+          {{ props.row.token.id }}
+      </b-table-column>
+      <b-table-column label="OBJKT" field="token" sortable v-slot="props">
+        <a :href="link(props.row.token.id)">
+          {{ link(props.row.token.id) }}
+        </a>
+      </b-table-column>
+      <b-table-column label="title" field="title" v-slot="props">
+        <b-tooltip multilined type="is-dark" v-if="props.row.token.mime.startsWith('image/') && !props.row.token.mime.includes('svg')">
+          {{ props.row.token.title }}
+          <template v-slot:content>
+            <b-image
+              :src="img(props.row.token.artifact_uri)"
+              :alt="props.row.token.title"
+            ></b-image>
+          </template>
+        </b-tooltip>
+        <span v-else>
+          {{ props.row.token.title }}
+        </span>
+      </b-table-column>
+      <b-table-column field="token.mime" label="mime" sortable v-slot="props">
+          {{ props.row.token.mime }}
+      </b-table-column>
+    </b-table>
   </div>
 </template>
 
@@ -77,11 +67,6 @@
         return '';
       },
     },
-    // watch: {
-    //   swaps() {
-    //     console.log(this.swaps);
-    //   },
-    // },
   };
 
 </script>

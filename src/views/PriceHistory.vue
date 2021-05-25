@@ -1,22 +1,22 @@
 <template>
   <div>
-    <zi-spacer y="1" />
-    <div class="overlay" v-if="$apollo.queries.hic_et_nunc_trade.loading">
-      <div class="overlay-content">
-        <zi-spinner size="big" />
-      </div>
-    </div>
+    <b-loading :is-full-page="true" v-model="$apollo.queries.hic_et_nunc_trade.loading" :can-cancel="false"></b-loading>
+
     <div v-if="error">{{ error }}</div>
-    <zi-input placeholder="1234" v-model="objkt" size="medium" autofocus style="width: 400px" />
-    <zi-spacer y="2" />
-    <zi-tabs @label-selected="filterResults">
-      <zi-tabs-item v-for="(item, index) in filters" :label="item.label" :value="item.value" :key="item.value + index">
-      </zi-tabs-item>
-    </zi-tabs>
+    <b-field>
+      <b-input placeholder="1234" v-model="objkt" autofocus></b-input>
+    </b-field>
+    <b-tabs v-model="filterStatus">
+      <template v-for="filter in filters">
+        <b-tab-item
+          :key="filter.value"
+          :value="filter.value"
+          :label="filter.label">
+        </b-tab-item>
+      </template>
+    </b-tabs>
     <HistoryItem :trades="filteredTrades" :objkt="objkt" />
-    <div v-show="objkt">
-      <zi-spacer y="2" />
-      <h4>Using this query</h4>
+    <div v-show="objkt && filterStatus === 'query'">
       <pre><code>{{ graphqlTemplate(query, {token: objkt}) }}</code></pre>
     </div>
   </div>
@@ -25,7 +25,7 @@
 <script>
 import gql from 'graphql-tag';
 import HistoryItem from '../components/HistoryItem.vue';
-import { graphqlTemplate1 } from '../utils';
+import { graphqlTemplate } from '../utils';
 
 export const QUERY = gql`
   query PriceHistory($token: bigint = "") {
@@ -80,7 +80,6 @@ export default {
   },
   computed: {
     filteredTrades() {
-      console.log(this.hic_et_nunc_trade);
       if (this.filterStatus === 'query') {
         return [];
       }
@@ -91,7 +90,7 @@ export default {
     },
   },
   methods: {
-    graphqlTemplate: graphqlTemplate1,
+    graphqlTemplate,
     filterResults(type) {
       if (type.value === 'query') {
         this.filterStatus = 'query';
