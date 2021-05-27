@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "npm run build && cp dist/index.html dist/404.html && gh-pages -d dist"
+    "deploy": "npm run build && cp dist/index.html dist/404.html && cp CNAME .nojekyll dist/ && gh-pages -d dist"
   },
   "dependencies": {
     "@geist-ui/vue": "^3.0.0",
