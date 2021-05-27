@@ -1,4 +1,5 @@
 export function graphqlTemplate(query, params) {
+  const type = query.definitions[0].selectionSet.selections[0].name.value;
   return `
 const query = \`${query.loc.source.body}\`;
 
@@ -23,7 +24,7 @@ async function doFetch() {
   if (errors) {
     console.error(errors);
   }
-  const result = data.hic_et_nunc_swap
+  const result = data.${type}
   console.log({ result })
   return result
 }
