@@ -1,11 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import App from './App.vue';
+import Home from './views/Home.vue';
 import SwapsOfMyWork from './views/SwapsOfMyWork.vue';
 import SwapsOfMyCollection from './views/SwapsOfMyCollection.vue';
 import CreatorGallery from './views/CreatorGallery.vue';
 import CollectorGallery from './views/CollectorGallery.vue';
 import PriceHistory from './views/PriceHistory.vue';
+import CreatorCollectors from './views/CreatorCollectors.vue';
 
 Vue.use(Router);
 
@@ -16,7 +17,7 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: App,
+      component: Home,
     },
     {
       path: '/my-art-on-secondary-market',
@@ -42,6 +43,11 @@ const router = new Router({
       path: '/price-history',
       name: 'price-history',
       component: PriceHistory,
+    },
+    {
+      path: '/creator-collectors',
+      name: 'creator-collectors',
+      component: CreatorCollectors,
     },
   ],
 });

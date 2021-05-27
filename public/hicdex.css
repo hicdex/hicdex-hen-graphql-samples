@@ -1,34 +1,8 @@
-/* body {
-  min-height: 100vh;
-  min-height: calc(100vh + 12px);
-} */
-
-.overlay {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.2);
-  overflow-x: hidden;
-  transition: 0.5s;
+.root-container {
+  min-height: calc(100vh - 216px);
+  padding-top: 10px;
 }
 
-.overlay-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-  color: white;
-  font-size: 4em;
-  text-transform: uppercase;
-}
-
-.overlay .zi-spinner {
-  margin: auto;
-}
 
 code:after, code:before {
   content: "";
