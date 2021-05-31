@@ -59,6 +59,17 @@
 
     <div class="columns">
       <div class="column is-half">
+        <router-link to="/sold">
+          <article class="box home-card">
+            <p class="title is-4">Your latest sale</p>
+            <p>
+              What you sold and when, primary and secondary.
+            </p>
+          </article>
+        </router-link>
+      </div>
+
+      <div class="column is-half">
         <router-link to="/price-history">
           <article class="box home-card">
             <p class="title is-4">OBJKT price history</p>
@@ -68,7 +79,9 @@
           </article>
         </router-link>
       </div>
+    </div>
 
+    <div class="columns">
       <div class="column is-half">
         <router-link to="/creator-gallery">
           <article class="box home-card">
@@ -79,9 +92,7 @@
           </article>
         </router-link>
       </div>
-    </div>
 
-    <div class="columns">
       <div class="column is-half">
         <router-link to="/collector-gallery">
           <article class="box home-card">
@@ -92,7 +103,9 @@
           </article>
         </router-link>
       </div>
+    </div>
 
+    <div class="columns">
       <div class="column is-half">
         <router-link to="/creator-collectors">
           <article class="box home-card">
