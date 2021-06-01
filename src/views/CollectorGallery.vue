@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-loading :is-full-page="true" v-model="$apollo.queries.hic_et_nunc_token.loading" :can-cancel="false"></b-loading>
+    <b-loading :is-full-page="true" v-model="$apollo.queries.hic_et_nunc_token_holder.loading" :can-cancel="false"></b-loading>
 
     <div v-if="error">{{ error }}</div>
     <b-field>
@@ -15,7 +15,7 @@
         </b-tab-item>
       </template>
     </b-tabs>
-    <Gallery v-if="filterStatus !== 'query'" :objkts="hic_et_nunc_token" :address="address" />
+    <Gallery v-if="filterStatus !== 'query'" :objkts="hic_et_nunc_token_holder" :address="address" />
     <div v-else>
       <pre><code>{{ graphqlTemplate(query, {address}) }}</code></pre>
     </div>
@@ -29,18 +29,24 @@ import { getAddress, graphqlTemplate } from '../utils';
 
 export const QUERY = gql`
   query collectorGallery($address: String!) {
-    hic_et_nunc_token(where: {trades: {buyer: {address: {_eq: $address}}}}) {
-      id
-      artifact_uri
-      thumbnail_uri
-      timestamp
-      mime
-      title
-      description
-      supply
-      token_tags {
-        tag {
-          tag
+    hic_et_nunc_token_holder(where: {holder_id: {_eq: $address}}, order_by: {token_id: desc}) {
+      token {
+        id
+        artifact_uri
+        display_uri
+        thumbnail_uri
+        timestamp
+        mime
+        title
+        description
+        supply
+        token_tags {
+          tag {
+            tag
+          }
+        }
+        creator {
+          address
         }
       }
     }
@@ -61,7 +67,7 @@ export default {
     return {
       addressInput: '',
       address: '',
-      hic_et_nunc_token: [],
+      hic_et_nunc_token_holder: [],
       error: null,
       filterStatus: '',
       filters: [
@@ -85,7 +91,7 @@ export default {
     graphqlTemplate,
   },
   apollo: {
-    hic_et_nunc_token: {
+    hic_et_nunc_token_holder: {
       query: QUERY,
       variables() {
         return {

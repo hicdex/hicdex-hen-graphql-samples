@@ -16,9 +16,15 @@
                 {{ objkt.title }}
               </p>
             </header>
-            <div class="card-image" v-if="objkt.mime.startsWith('image/')">
-              <figure class="image">
-                <img :src="img(objkt.artifact_uri)" :alt="objkt.title">
+            <div class="card-image">
+              <figure class="image" v-if="objkt.mime.startsWith('image/')">
+                <img lazy :src="img(objkt.artifact_uri)" :alt="objkt.title">
+              </figure>
+              <figure class="image" v-else-if="objkt.display_uri">
+                <img lazy :src="img(objkt.display_uri)" :alt="objkt.title">
+              </figure>
+              <figure class="image" v-else>
+                <code>no thumbnail</code>
               </figure>
             </div>
             <div class="card-content">
@@ -37,16 +43,6 @@
                   <li>
                     <p>
                       mime {{ objkt.mime }}
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      file {{ objkt.artifact_uri }}
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      thumbnail {{ objkt.thumbnail_uri }}
                     </p>
                   </li>
                   <li>
@@ -85,9 +81,10 @@
     mounted() {},
     computed: {
       group() {
+        console.log(this.objkts);
         const groups = [];
         for (let i = 0; i < this.objkts.length; i += 3) {
-          groups.push(this.objkts.slice(i, i + 3));
+          groups.push(this.objkts.slice(i, i + 3).map(({ token }) => token));
         }
         return groups;
       },
