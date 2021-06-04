@@ -20,13 +20,13 @@
       <code>status</code> can have one of three values describing the lifecycle of a swap:
       <ul>
         <li>
-          <code>1</code>, active swap, something can be bought from this swap,
+          <code>0</code>, active swap, something can be bought from this swap,
         </li>
         <li>
-          <code>2</code>, finished swap, everything from this swap has been sold,
+          <code>1</code>, finished swap, everything from this swap has been sold,
         </li>
         <li>
-          <code>3</code>, canceled swap, the swap has been canceled, parts of it might have been sold but not all of it, otherwise it would be <code>2</code> (finished).
+          <code>2</code>, canceled swap, the swap has been canceled, parts of it might have been sold but not all of it, otherwise it would be <code>1</code> (finished).
         </li>
       </ul>
     </p>
