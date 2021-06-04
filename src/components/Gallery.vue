@@ -81,7 +81,6 @@
     mounted() {},
     computed: {
       group() {
-        console.log(this.objkts);
         const groups = [];
         for (let i = 0; i < this.objkts.length; i += 3) {
           groups.push(this.objkts.slice(i, i + 3).map(({ token }) => token));

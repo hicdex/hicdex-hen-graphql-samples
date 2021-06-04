@@ -116,6 +116,17 @@
           </article>
         </router-link>
       </div>
+
+      <div class="column is-half">
+        <router-link to="/objkt">
+          <article class="box home-card">
+            <p class="title is-4">OBJKT by ID</p>
+            <p>
+              Audit a single objkt.
+            </p>
+          </article>
+        </router-link>
+      </div>
     </div>
 
   </div>

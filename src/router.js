@@ -7,7 +7,9 @@ import CreatorGallery from './views/CreatorGallery.vue';
 import CollectorGallery from './views/CollectorGallery.vue';
 import PriceHistory from './views/PriceHistory.vue';
 import CreatorCollectors from './views/CreatorCollectors.vue';
+import Docs from './views/Docs.vue';
 import Sold from './views/Sold.vue';
+import Objkt from './views/Objkt.vue';
 
 Vue.use(Router);
 
@@ -54,6 +56,16 @@ const router = new Router({
       path: '/sold',
       name: 'sold',
       component: Sold,
+    },
+    {
+      path: '/objkt',
+      name: 'objkt',
+      component: Objkt,
+    },
+    {
+      path: '/docs',
+      name: 'docs',
+      component: Docs,
     },
   ],
 });

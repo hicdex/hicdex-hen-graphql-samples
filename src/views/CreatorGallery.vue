@@ -15,7 +15,7 @@
         </b-tab-item>
       </template>
     </b-tabs>
-    <Gallery v-if="filterStatus !== 'query'" :objkts="hic_et_nunc_token" :address="address" />
+    <Gallery v-if="filterStatus !== 'query'" :objkts="hic_et_nunc_token.map(x => ({token: x}))" :address="address" />
     <div v-else>
       <pre><code>{{ graphqlTemplate(query, {address}) }}</code></pre>
     </div>
@@ -29,7 +29,7 @@ import { getAddress, graphqlTemplate } from '../utils';
 
 export const QUERY = gql`
   query creatorGallery($address: String!) {
-    hic_et_nunc_token(where: {creator: {address: {_eq: $address}}}) {
+    hic_et_nunc_token(where: {creator: {address: {_eq: $address}}, supply: {_gt: 0}}, order_by: {id: desc}) {
       id
       artifact_uri
       thumbnail_uri
