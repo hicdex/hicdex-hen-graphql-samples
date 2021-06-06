@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import GeistUI from '@geist-ui/vue';
 import Buefy from 'buefy';
-import 'buefy/dist/buefy.css';
-import '../public/hicdex.css';
 import VueApollo from 'vue-apollo';
 
 import ApolloClient from 'apollo-client';
@@ -11,6 +9,9 @@ import { WebSocketLink } from 'apollo-link-ws';
 
 import App from './App.vue';
 import router from './router';
+
+import 'buefy/dist/buefy.css';
+import '../public/hicdex.css';
 
 Vue.use(VueApollo);
 
