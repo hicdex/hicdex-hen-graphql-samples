@@ -10,6 +10,7 @@ import CreatorCollectors from './views/CreatorCollectors.vue';
 import Docs from './views/Docs.vue';
 import Sold from './views/Sold.vue';
 import Objkt from './views/Objkt.vue';
+import Charts from './views/Charts.vue';
 
 Vue.use(Router);
 
@@ -66,6 +67,11 @@ const router = new Router({
       path: '/docs',
       name: 'docs',
       component: Docs,
+    },
+    {
+      path: '/charts',
+      name: 'charts',
+      component: Charts,
     },
   ],
 });

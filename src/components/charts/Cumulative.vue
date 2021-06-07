@@ -27,14 +27,14 @@ export default {
         label: labels[i],
         data: obj.map(({ count }) => count),
         borderColor: i === 0 ? '#ff00ff' : '#ff0000',
-        fill: false,
+        fill: true,
         yAxisID: 'left-y-axis',
       });
       datasets.push({
         label: `${labels[i]} (sum)`,
         data: obj.map(({ sum }) => sum),
         borderColor: i === 0 ? '#0000ff' : '#00ff00',
-        fill: true,
+        fill: false,
         yAxisID: 'right-y-axis',
       });
     });
@@ -42,7 +42,7 @@ export default {
     this.options = {
       title: {
         display: true,
-        text: 'Sales',
+        text: 'Sales & Objkts over time',
       },
       responsive: true,
       maintainAspectRatio: false,
