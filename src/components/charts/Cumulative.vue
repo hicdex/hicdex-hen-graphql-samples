@@ -23,20 +23,46 @@ export default {
 
     const datasets = [];
     data.forEach((obj, i) => {
-      datasets.push({
-        label: labels[i],
-        data: obj.map(({ count }) => count),
-        borderColor: i === 0 ? '#ff00ff' : '#ff0000',
-        fill: false,
-        yAxisID: 'left-y-axis',
-      });
-      datasets.push({
-        label: `${labels[i]} (sum)`,
-        data: obj.map(({ sum }) => sum),
-        borderColor: i === 0 ? '#0000ff' : '#00ff00',
-        fill: true,
-        yAxisID: 'right-y-axis',
-      });
+      if (i === 0) {
+        datasets.push({
+          type: 'line',
+          label: `${labels[i]} (sum)`,
+          data: obj.map(({ sum }) => sum),
+          borderColor: '#270acf',
+          fill: false,
+          yAxisID: 'left-y-axis',
+        });
+      } else {
+        datasets.push({
+          type: 'line',
+          label: `${labels[i]} (sum)`,
+          data: obj.map(({ sum }) => sum),
+          borderColor: '#0587ee',
+          fill: false,
+          yAxisID: 'left-y-axis',
+        });
+      }
+    });
+    data.forEach((obj, i) => {
+      if (i === 0) {
+        datasets.push({
+          type: 'bar',
+          label: labels[i],
+          data: obj.map(({ count }) => count),
+          backgroundColor: '#484848',
+          fill: true,
+          yAxisID: 'right-y-axis',
+        });
+      } else {
+        datasets.push({
+          type: 'bar',
+          label: labels[i],
+          data: obj.map(({ count }) => count),
+          backgroundColor: '#a5a5a5',
+          fill: true,
+          yAxisID: 'right-y-axis',
+        });
+      }
     });
 
     this.options = {
@@ -50,13 +76,23 @@ export default {
         yAxes: [
           {
             id: 'left-y-axis',
-            type: 'linear',
             position: 'left',
+            type: 'linear',
           }, {
             id: 'right-y-axis',
-            type: 'linear',
             position: 'right',
+            type: 'linear',
+            display: false,
+            gridLines: {
+              display: false,
+            },
           }],
+      },
+      elements: {
+        point: {
+          radius: 2,
+          hitRadius: 4,
+        },
       },
     };
 
@@ -69,7 +105,7 @@ export default {
     return {
       options: {},
       series: {},
-      height: 300,
+      height: 440,
     };
   },
   computed: {
