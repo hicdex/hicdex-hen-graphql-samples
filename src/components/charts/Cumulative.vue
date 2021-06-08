@@ -68,7 +68,7 @@ export default {
     this.options = {
       title: {
         display: true,
-        text: 'Sales',
+        text: 'Sales & Objkts over time',
       },
       responsive: true,
       maintainAspectRatio: false,
