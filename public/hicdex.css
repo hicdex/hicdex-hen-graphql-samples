@@ -25,12 +25,8 @@ a.primary-sale {
   font-weight: 300;
 }
 
-.home-cards {
-  margin-top: 16px;
-}
-
-.home-card {
-  min-height: 168px;
+article.tile a {
+  text-decoration: none !important;
 }
 
 .github-corner {

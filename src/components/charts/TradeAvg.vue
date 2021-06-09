@@ -12,26 +12,29 @@ export default {
   },
   async mounted() {
     const labels = [
-      'Objkts',
-      'Sales',
+      '≤ 0.01 xtz',
+      '> 0.01, < 10 xtz',
+      '≥ 10 xtz',
     ];
     const colors = [
-      { line: '#003f5c', bar: '#0078b0' },
-      { line: '#b37400', bar: '#ffa600' },
+      { line: '#cc9900', bar: '#ffcc33' },
+      { line: '#ff2676', bar: '#ff8ab5' },
+      { line: '#0062ff', bar: '#66a1ff' },
     ];
     const json = [
-      'cache/objkt_cumul.json',
-      'cache/trade_cumul.json',
+      'cache/avg_a.json',
+      'cache/avg_b.json',
+      'cache/avg_c.json',
     ].map((file) => fetch(`https://api.hicdex.com/${file}`).then((res) => res.json()));
     const data = await Promise.all(json);
-    const dates = data[0].map(({ date }) => date);
+    const dates = [...Array(24)].map((_, i) => `${i} GMT`);
 
     const datasets = [];
     data.forEach((obj, i) => {
       datasets.push({
         type: 'line',
-        label: `${labels[i]} (sum)`,
-        data: obj.map(({ sum }) => sum),
+        label: `price ${labels[i]}`,
+        data: obj.map(({ price }) => price),
         borderColor: colors[i].line,
         fill: false,
         yAxisID: 'left-y-axis',
@@ -40,8 +43,8 @@ export default {
     data.forEach((obj, i) => {
       datasets.push({
         type: 'bar',
-        label: labels[i],
-        data: obj.map(({ count }) => count),
+        label: `sales priced ${labels[i]}`,
+        data: obj.map(({ trades }) => trades),
         backgroundColor: colors[i].bar,
         fill: true,
         yAxisID: 'right-y-axis',
@@ -51,7 +54,7 @@ export default {
     this.options = {
       title: {
         display: true,
-        text: 'Sales & Objkts over time',
+        text: 'Sales by price range by hour of the day (GMT)',
       },
       responsive: true,
       maintainAspectRatio: false,
@@ -66,7 +69,7 @@ export default {
             type: 'linear',
             scaleLabel: {
               display: true,
-              labelString: 'sum (lines)',
+              labelString: 'average price',
             },
           }, {
             id: 'right-y-axis',
@@ -74,7 +77,7 @@ export default {
             type: 'linear',
             scaleLabel: {
               display: true,
-              labelString: 'daily (bars)',
+              labelString: '#sales',
             },
             gridLines: {
               display: false,
