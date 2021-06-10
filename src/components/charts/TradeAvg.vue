@@ -55,6 +55,7 @@ export default {
       title: {
         display: true,
         text: 'Sales by price range by hour of the day (GMT)',
+        fontSize: 30,
       },
       responsive: true,
       maintainAspectRatio: false,
@@ -67,6 +68,7 @@ export default {
             id: 'left-y-axis',
             position: 'left',
             type: 'linear',
+            ticks: { suggestedMin: 0 },
             scaleLabel: {
               display: true,
               labelString: 'average price',

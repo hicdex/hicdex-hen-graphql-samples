@@ -11,6 +11,8 @@
       </svg>
     </a>
 
+    <Nav />
+
     <router-view class="container root-container" />
 
     <footer class="footer">
@@ -30,8 +32,10 @@
 </template>
 
 <script>
+import Nav from './components/Nav.vue';
+
 export default {
   name: 'App',
-  components: {},
+  components: { Nav },
 };
 </script>

@@ -29,7 +29,7 @@ import { getAddress, graphqlTemplate } from '../utils';
 
 export const QUERY = gql`
   query collectorGallery($address: String!) {
-    hic_et_nunc_token_holder(where: {holder_id: {_eq: $address}}, order_by: {token_id: desc}) {
+    hic_et_nunc_token_holder(where: {holder_id: {_eq: $address}, quantity: {_gt: "0"}, token: {supply: {_gt: "0"}}}, order_by: {id: desc}) {
       token {
         id
         artifact_uri

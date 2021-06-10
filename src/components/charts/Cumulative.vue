@@ -52,6 +52,7 @@ export default {
       title: {
         display: true,
         text: 'Sales & Objkts over time',
+        fontSize: 30,
       },
       responsive: true,
       maintainAspectRatio: false,

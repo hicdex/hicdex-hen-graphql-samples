@@ -60,6 +60,19 @@
             </router-link>
           </article>
         </div>
+
+        <div class="tile is-parent">
+          <article class="tile is-child notification">
+            <router-link to="/charts">
+                <p class="title">HEN Statistics</p>
+                <div class="content">
+                  <p>
+                    Some charts showing what's happening on HEN over time.
+                  </p>
+                </div>
+            </router-link>
+          </article>
+        </div>
       </div>
     </div>
 
@@ -69,7 +82,7 @@
         <div class="tile is-parent">
           <article class="tile is-child notification">
             <router-link to="/sold">
-                <p class="title">Your latest sales</p>
+                <p class="title">your latest sales</p>
                 <div class="content">
                   <p>
                     What you sold and when, primary and secondary.
@@ -82,7 +95,7 @@
         <div class="tile is-parent">
           <article class="tile is-child notification">
             <router-link to="/my-secondary-market-sales">
-                <p class="title">Your sales on the secondary market</p>
+                <p class="title">your sales on the secondary market</p>
                 <div class="content">
                   <p>
                     What you have bought and are either trying to sell on the secondary market
@@ -96,7 +109,7 @@
         <div class="tile is-parent">
           <article class="tile is-child notification">
             <router-link to="/creator-gallery">
-                <p class="title">Your creations</p>
+                <p class="title">your creations</p>
                 <div class="content">
                   <p>
                     All your artworks in a single call. Some artists might want to display their creations on their website.
@@ -112,7 +125,7 @@
         <div class="tile is-parent">
           <article class="tile is-child notification">
             <router-link to="/my-art-on-secondary-market">
-                <p class="title">Your OBJKTS on the secondary market</p>
+                <p class="title">your OBJKTS on the secondary market</p>
                 <div class="content">
                   <p>
                     Which artworks of yours are either on sale on the secondary market
@@ -126,7 +139,7 @@
         <div class="tile is-parent">
           <article class="tile is-child notification">
             <router-link to="/creator-collectors">
-                <p class="title">Who collected your work</p>
+                <p class="title">who collected your work</p>
                 <div class="content">
                   <p>
                     A list of your biggest fans: everyone who bought one of your piece on the primary market and how many they bought total.
@@ -139,7 +152,7 @@
         <div class="tile is-parent">
           <article class="tile is-child notification">
             <router-link to="/collector-gallery">
-                <p class="title">Your collection</p>
+                <p class="title">your collection</p>
                 <div class="content">
                   <p>
                     Why not show your collection on your website, build a nice exhibition as if you were an actuall gallery (hint: you are.)
