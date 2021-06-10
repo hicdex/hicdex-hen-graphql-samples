@@ -1,3 +1,12 @@
+.navbar {
+  width: 100px;
+}
+
+.footer {
+  margin-top: 2em;
+  padding: 2rem 1.5rem 2rem;
+}
+
 .root-container {
   min-height: calc(100vh - 216px);
   padding-top: 10px;
@@ -25,12 +34,8 @@ a.primary-sale {
   font-weight: 300;
 }
 
-.home-cards {
-  margin-top: 16px;
-}
-
-.home-card {
-  min-height: 168px;
+article.tile a {
+  text-decoration: none !important;
 }
 
 .github-corner {
