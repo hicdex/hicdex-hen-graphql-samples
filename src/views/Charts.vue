@@ -5,6 +5,13 @@
     </div>
 
     <div class="block">
+      <active-users />
+      <p class="content mt-4">
+        <em>A wallet is considered active if it either minted, swapped, or bought an objkt on that day.</em>
+      </p>
+    </div>
+
+    <div class="block">
       <trade-avg />
     </div>
 
@@ -20,10 +27,12 @@
 
 <script>
 import Cumulative from '../components/charts/Cumulative.vue';
+import ActiveUsers from '../components/charts/ActiveUsers.vue';
 import TradeAvg from '../components/charts/TradeAvg.vue';
 
 export default {
   components: {
+    ActiveUsers,
     Cumulative,
     TradeAvg,
   },
