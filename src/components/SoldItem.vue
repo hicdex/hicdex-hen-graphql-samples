@@ -20,11 +20,11 @@
         </a>
       </b-table-column>
       <b-table-column label="title" field="token.title" sortable v-slot="props">
-        <b-tooltip multilined type="is-dark" v-if="props.row.token.mime.startsWith('image/') && !props.row.token.mime.includes('svg')">
+        <b-tooltip multilined type="is-dark" v-if="(props.row.token.mime.startsWith('image/') && !props.row.token.mime.includes('svg')) || props.row.token.display_uri">
           {{ props.row.token.title }}
           <template v-slot:content>
             <b-image
-              :src="img(props.row.token.artifact_uri)"
+              :src="img(props.row.token.display_uri || props.row.token.artifact_uri)"
               :alt="props.row.token.title"
             ></b-image>
           </template>

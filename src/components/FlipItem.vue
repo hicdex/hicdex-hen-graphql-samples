@@ -8,11 +8,14 @@
     <b-table
       v-else
       :data="items">
-      <b-table-column field="trade.swap.price" label="price you paid" sortable numeric v-slot="props">
+      <b-table-column field="buy.swap.price" label="price you paid" sortable numeric v-slot="props">
         {{ (props.row.buy.swap.price / 1000000).toFixed(2) }}
       </b-table-column>
-      <b-table-column field="trade.swap.price" label="last 2nd market price" sortable numeric v-slot="props">
-        {{ (props.row.trade.swap.price / 1000000).toFixed(2) }}
+      <b-table-column field="highest_trade.swap.price" label="highest 2nd market price" sortable numeric v-slot="props">
+        {{ (props.row.highest_trade.swap.price / 1000000).toFixed(2) }}
+      </b-table-column>
+      <b-table-column field="latest_trade.swap.price" label="most recent 2nd market price" sortable numeric v-slot="props">
+        {{ (props.row.latest_trade.swap.price / 1000000).toFixed(2) }}
       </b-table-column>
       <b-table-column field="diff" label="change" numeric v-slot="props">
         {{ props.row.diff }}%

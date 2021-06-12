@@ -37,7 +37,7 @@ export const QUERY = gql`
 
 const TRADE_QUERY = gql`
   query Trades($seller_id: String!, $token_id: bigint!) {
-    hic_et_nunc_trade(where: {seller_id: {_neq: $seller_id}, token_id: {_eq: $token_id}}, order_by: {id: desc}, limit: 1) {
+    hic_et_nunc_trade(where: {seller_id: {_neq: $seller_id}, token_id: {_eq: $token_id}}, order_by: {id: desc}) {
       swap {
         price
       }
@@ -102,11 +102,17 @@ export default {
       // console.log(buys);
       for (let i = 0; i < data.length; i += 1) {
         data[i].buy = buys.find(({ token_id: tokenId }) => tokenId === data[i].token.id) || { swap: { price: 0 } };
-        data[i].trade = trades[i];
+        data[i].latest_trade = trades[i][0];
+        if (trades[i]) {
+          data[i].highest_trade = trades[i].reduce((highest, current) => {
+            if (current.swap.price > highest.swap.price) return current;
+            return highest;
+          }, { swap: { price: 0 } });
+        }
       }
-      const items = data.filter(({ trade }) => trade?.swap?.price).map((item) => {
+      const items = data.filter(({ latest_trade: latestTrade }) => latestTrade?.swap?.price).map((item) => {
         const boughtFor = item.buy.swap.price;
-        const soldFor = item.trade.swap.price;
+        const soldFor = item.latest_trade.swap.price;
         if (boughtFor) {
           if (boughtFor <= soldFor) {
             item.diff = (soldFor / boughtFor) * 100;
@@ -155,7 +161,7 @@ export default {
           },
         });
         if (data.hic_et_nunc_trade.length) {
-          return data.hic_et_nunc_trade[0];
+          return data.hic_et_nunc_trade;
         }
       } catch (_err) {
         //

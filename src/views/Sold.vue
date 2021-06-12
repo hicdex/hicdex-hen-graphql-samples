@@ -34,6 +34,7 @@ export const QUERY = gql`
       token {
         id
         artifact_uri
+        display_uri
         mime
         title
         creator {

@@ -45,6 +45,7 @@ export const QUERY = gql`
         description
         id
         artifact_uri
+        display_uri
       }
     }
   }

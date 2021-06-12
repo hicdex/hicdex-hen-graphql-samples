@@ -32,6 +32,7 @@ export const QUERY = gql`
     hic_et_nunc_token(where: {creator: {address: {_eq: $address}}, supply: {_gt: 0}}, order_by: {id: desc}) {
       id
       artifact_uri
+      display_uri
       thumbnail_uri
       timestamp
       mime

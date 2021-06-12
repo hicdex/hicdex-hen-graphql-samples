@@ -17,11 +17,8 @@
               </p>
             </header>
             <div class="card-image">
-              <figure class="image" v-if="objkt.mime.startsWith('image/')">
-                <img lazy :src="img(objkt.artifact_uri)" :alt="objkt.title">
-              </figure>
-              <figure class="image" v-else-if="objkt.display_uri">
-                <img lazy :src="img(objkt.display_uri)" :alt="objkt.title">
+              <figure class="image" v-if="objkt.mime.startsWith('image/') || objkt.display_uri">
+                <img lazy :src="img(objkt.display_uri || objkt.artifact_uri)" :alt="objkt.title">
               </figure>
               <figure class="image" v-else>
                 <code>no thumbnail</code>
