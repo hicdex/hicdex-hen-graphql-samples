@@ -20,6 +20,13 @@
       <b-table-column field="diff" label="change" numeric v-slot="props">
         {{ props.row.diff }}%
       </b-table-column>
+      <b-table-column field="current_swaps.count" label="currently for sale" numeric v-slot="props">
+        {{ props.row.current_swaps.count }} editions
+        <br>
+        <span v-show="props.row.current_swaps.count">
+          (avg price: {{ (props.row.current_swaps.price_avg / 1000000).toFixed(2) }}
+        </span>
+      </b-table-column>
       <b-table-column label="OBJKT" field="token" sortable v-slot="props">
         <b-tooltip multilined type="is-dark" v-if="(props.row.token.mime.startsWith('image/') && !props.row.token.mime.includes('svg')) || props.row.token.display_uri">
           <a :href="link(props.row.token.id)"> {{ props.row.token.id }} </a>

@@ -30,6 +30,10 @@ export const QUERY = gql`
         display_uri
         supply
         creator_id
+        swaps(where: {status: {_eq: "0"}}) {
+          amount_left
+          price
+        }
       }
     }
   }
@@ -101,6 +105,12 @@ export default {
       const buys = await this.buys(data.map(({ token: { id } }) => id));
       // console.log(buys);
       for (let i = 0; i < data.length; i += 1) {
+        data[i].current_swaps = {};
+
+        const priceSum = data[i].token.swaps.reduce((sum, { price }) => sum + price, 0);
+        data[i].current_swaps.count = data[i].token.swaps.reduce((sum, { amount_left: amountLeft }) => sum + amountLeft, 0);
+        data[i].current_swaps.price_avg = priceSum / data[i].current_swaps.count;
+
         data[i].buy = buys.find(({ token_id: tokenId }) => tokenId === data[i].token.id) || { swap: { price: 0 } };
         data[i].latest_trade = trades[i][0];
         if (trades[i]) {
