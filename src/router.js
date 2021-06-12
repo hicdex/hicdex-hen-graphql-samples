@@ -9,6 +9,7 @@ import PriceHistory from './views/PriceHistory.vue';
 import CreatorCollectors from './views/CreatorCollectors.vue';
 import Docs from './views/Docs.vue';
 import Sold from './views/Sold.vue';
+import Flip from './views/Flip.vue';
 import Objkt from './views/Objkt.vue';
 import Charts from './views/Charts.vue';
 
@@ -57,6 +58,11 @@ const router = new Router({
       path: '/sold',
       name: 'sold',
       component: Sold,
+    },
+    {
+      path: '/flip',
+      name: 'flip',
+      component: Flip,
     },
     {
       path: '/objkt',

@@ -35,102 +35,60 @@
       </div>
 
       <div class="tile is-vertical is-6">
-        <div class="tile is-parent">
-          <article class="tile is-child notification">
-            <router-link to="/objkt">
-              <p class="title">OBJKT by ID</p>
-              <div class="content">
-                <p>
-                  Audit a single objkt.
-                </p>
-              </div>
-            </router-link>
-          </article>
-        </div>
+        <tile routeName="objkt" title="OBJKT by ID">
+          <p>
+            Audit a single objkt.
+          </p>
+        </tile>
 
-        <div class="tile is-parent">
-          <article class="tile is-child notification">
-            <router-link to="/price-history">
-              <p class="title">OBJKT price history</p>
-              <div class="content">
-                <p>
-                  Explore the price history of an OBJKT.
-                </p>
-              </div>
-            </router-link>
-          </article>
-        </div>
+        <tile routeName="price-history" title="OBJKT price history">
+          <p>
+            Explore the price history of an OBJKT.
+          </p>
+        </tile>
 
-        <div class="tile is-parent">
-          <article class="tile is-child notification">
-            <router-link to="/charts">
-              <p class="title">HEN Statistics</p>
-              <div class="content">
-                <p>
-                  Some charts showing what's happening on HEN over time.
-                </p>
-              </div>
-            </router-link>
-          </article>
-        </div>
+        <tile routeName="charts" title="HEN Statistics">
+          <p>
+            Some charts showing what's happening on HEN over time.
+          </p>
+        </tile>
+
       </div>
     </div>
 
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-6">
 
-        <div class="tile is-parent">
-          <article class="tile is-child notification">
-            <router-link to="/sold">
-              <p class="title">your latest sales</p>
-              <div class="content">
-                <p>
-                  What you sold and when, primary and secondary.
-                </p>
-              </div>
-            </router-link>
-          </article>
-        </div>
+        <tile routeName="sold" title="your latest sales">
+          <p>
+            What you sold and when, primary and secondary.
+          </p>
+        </tile>
 
-        <div class="tile is-parent">
-          <article class="tile is-child notification">
-            <router-link to="/my-secondary-market-sales">
-              <p class="title">your sales on the secondary market</p>
-              <div class="content">
-                <p>
-                  What you have bought and are either trying to sell on the secondary market
-                  or have sold on the secondary market.
-                </p>
-              </div>
-            </router-link>
-          </article>
-        </div>
+        <tile routeName="my-secondary-market-sales" title="your sales on the secondary market">
+          <p>
+            What you have bought and are either trying to sell on the secondary market
+            or have sold on the secondary market.
+          </p>
+        </tile>
 
-        <div class="tile is-parent">
-          <article class="tile is-child notification">
-            <router-link to="/creator-gallery">
-              <p class="title">your creations</p>
-              <div class="content">
-                <p>
-                  All your artworks in a single call. Some artists might want to display their creations on their website.
-                </p>
-              </div>
-            </router-link>
-          </article>
-        </div>
+        <tile routeName="creator-gallery" title="your creations">
+          <p>
+            All your artworks in a single call. Some artists might want to display their creations on their website.
+          </p>
+        </tile>
 
-        <div class="tile is-parent">
-          <article class="tile is-child notification">
-            <router-link to="/collector-gallery">
-              <p class="title">your collection</p>
-              <div class="content">
-                <p>
-                  Why not show your collection on your website, build a nice exhibition as if you were an actuall gallery (hint: you are.)
-                </p>
-              </div>
-            </router-link>
-          </article>
-        </div>
+        <tile routeName="collector-gallery" title="your collection">
+          <p>
+            Why not show your collection on your website, build a nice exhibition as if you were an actuall gallery (hint: you are.)
+          </p>
+        </tile>
+
+        <!--<tile routeName="flip" title="flip opportunities">
+          <p>
+            What in your collection would be the worth putting on the secondary market?
+          </p>
+        </tile>-->
 
       </div>
 
@@ -183,32 +141,18 @@
           </article>
         </div>
 
-        <div class="tile is-parent">
-          <article class="tile is-child notification">
-            <router-link to="/my-art-on-secondary-market">
-              <p class="title">your OBJKTS on the secondary market</p>
-              <div class="content">
-                <p>
-                  Which artworks of yours are either on sale on the secondary market
-                  or have been sold on the secondary market.
-                </p>
-              </div>
-            </router-link>
-          </article>
-        </div>
+        <tile routeName="my-art-on-secondary-market" title="your OBJKTS on the secondary market">
+          <p>
+            Which artworks of yours are either on sale on the secondary market
+            or have been sold on the secondary market.
+          </p>
+        </tile>
 
-        <div class="tile is-parent">
-          <article class="tile is-child notification">
-            <router-link to="/creator-collectors">
-              <p class="title">who collected your work</p>
-              <div class="content">
-                <p>
-                  A list of your biggest fans: everyone who bought one of your piece on the primary market and how many they bought total.
-                </p>
-              </div>
-            </router-link>
-          </article>
-        </div>
+        <tile routeName="creator-collectors" title="who collected your work">
+          <p>
+            A list of your biggest fans: everyone who bought one of your piece on the primary market and how many they bought total.
+          </p>
+        </tile>
 
       </div>
 
@@ -220,6 +164,7 @@
 <script>
 import { TezosToolkit } from '@taquito/taquito';
 import { BeaconWallet } from '@taquito/beacon-wallet';
+import Tile from '../components/Tile.vue';
 
 const Tezos = new TezosToolkit('https://mainnet.smartpy.io/');
 const options = { name: 'hicdex' };
@@ -252,6 +197,9 @@ const list = [
 ];
 
 export default {
+  components: {
+    Tile,
+  },
   data() {
     return {
       donation: undefined,
