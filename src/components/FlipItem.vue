@@ -8,6 +8,9 @@
     <b-table
       v-else
       :data="items">
+      <b-table-column field="quantity" label="editions you own" sortable numeric v-slot="props">
+        {{ props.row.quantity }}
+      </b-table-column>
       <b-table-column field="buy.swap.price" label="price you paid" sortable numeric v-slot="props">
         {{ (props.row.buy.swap.price / 1000000).toFixed(2) }}
       </b-table-column>
@@ -24,7 +27,7 @@
         {{ props.row.current_swaps.count }} editions
         <br>
         <span v-show="props.row.current_swaps.count">
-          (avg price: {{ (props.row.current_swaps.price_avg / 1000000).toFixed(2) }}
+          (median price: {{ (props.row.current_swaps.price_med / 1000000).toFixed(2) }}
         </span>
       </b-table-column>
       <b-table-column label="OBJKT" field="token" sortable v-slot="props">
@@ -41,11 +44,13 @@
           <a :href="link(props.row.token.id)"> {{ props.row.token.id }} </a>
         </span>
       </b-table-column>
-      <b-table-column label="title" field="title" v-slot="props">
-        {{ props.row.token.title }}
-      </b-table-column>
-      <b-table-column field="token.mime" label="mime" sortable v-slot="props">
-          {{ props.row.token.mime }}
+      <b-table-column label="title / author" field="title" v-slot="props">
+        {{ props.row.token.title }}<br>
+        <p class="is-size-7">
+          by
+          <span v-show="props.row.token.creator.name">{{ props.row.token.creator.name }}</span>
+          <span v-show="!props.row.token.creator.name">{{ props.row.token.creator_id }}</span>
+        </p>
       </b-table-column>
     </b-table>
   </div>

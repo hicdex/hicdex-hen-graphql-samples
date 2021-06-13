@@ -19,9 +19,16 @@ import gql from 'graphql-tag';
 import FlipItem from '../components/FlipItem.vue';
 import { getAddress, graphqlTemplate } from '../utils';
 
+const median = (arr) => {
+  const mid = Math.floor(arr.length / 2);
+    const nums = [...arr].sort((a, b) => a - b);
+  return arr.length % 2 !== 0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2;
+};
+
 export const QUERY = gql`
   query FlipOpportunities($address: String!) {
     hic_et_nunc_token_holder(where: {holder_id: {_eq: $address}, quantity: {_gt: "0"}, token: {supply: {_gt: "0"}}}, order_by: {id: desc}) {
+      quantity
       token {
         id
         title
@@ -30,6 +37,9 @@ export const QUERY = gql`
         display_uri
         supply
         creator_id
+        creator {
+          name
+        }
         swaps(where: {status: {_eq: "0"}}) {
           amount_left
           price
@@ -106,10 +116,9 @@ export default {
       // console.log(buys);
       for (let i = 0; i < data.length; i += 1) {
         data[i].current_swaps = {};
-
-        const priceSum = data[i].token.swaps.reduce((sum, { price }) => sum + price, 0);
+        const prices = data[i].token.swaps.map(({ price }) => price);
         data[i].current_swaps.count = data[i].token.swaps.reduce((sum, { amount_left: amountLeft }) => sum + amountLeft, 0);
-        data[i].current_swaps.price_avg = priceSum / data[i].current_swaps.count;
+        data[i].current_swaps.price_med = median(prices);
 
         data[i].buy = buys.find(({ token_id: tokenId }) => tokenId === data[i].token.id) || { swap: { price: 0 } };
         data[i].latest_trade = trades[i][0];
@@ -120,6 +129,7 @@ export default {
           }, { swap: { price: 0 } });
         }
       }
+
       const items = data.filter(({ latest_trade: latestTrade }) => latestTrade?.swap?.price).map((item) => {
         const boughtFor = item.buy.swap.price;
         const soldFor = item.latest_trade.swap.price;
