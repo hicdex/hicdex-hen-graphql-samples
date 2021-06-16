@@ -48,6 +48,12 @@ export const QUERY = gql`
         creator {
           address
         }
+        swaps(where: {status: {_eq: "0"}}, order_by: {price: asc}) {
+          amount
+          amount_left
+          creator_id
+          price
+        }
       }
     }
   }
