@@ -40,6 +40,7 @@ export const QUERY = gql`
       royalties
       supply
       thumbnail_uri
+      metadata
       timestamp
       title
       token_tags(order_by: {id: asc}) {
@@ -68,6 +69,8 @@ export const QUERY = gql`
         quantity
         holder_id
       }
+      hdao_balance
+      extra
     }
   }
 `;

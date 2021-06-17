@@ -17,6 +17,7 @@
           <span v-if="Array.isArray(props.row.val)">
             {{ props.row.val.map(x => x.tag.tag).join(', ') }}
           </span>
+          <pre v-else-if="typeof props.row.val === 'object'"><code>{{ JSON.stringify(props.row.val, null, 2) }}</code></pre>
           <span v-else>
             {{ props.row.val }}
           </span>
@@ -128,7 +129,7 @@
     computed: {
       properties() {
         return Object.entries(this.objkt)
-          .filter(([key, val]) => typeof val !== 'object' || key === 'token_tags')
+          .filter(([key, val]) => typeof val !== 'object' || key === 'extra' || key === 'token_tags')
           .filter(([key, _val]) => !key.startsWith('__'))
           .map(([key, val]) => ({ key, val }));
       },
