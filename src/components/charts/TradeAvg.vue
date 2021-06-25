@@ -62,6 +62,7 @@ export default {
       scales: {
         xAxes: [{
           offset: true,
+          stacked: true,
         }],
         yAxes: [
           {
