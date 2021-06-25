@@ -15,27 +15,19 @@
 
     <router-view class="container root-container" />
 
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p>
-          <a href="https://github.com/hicdex"><strong>hicdex</strong></a>
-          by <a href="https://www.hicetnunc.xyz/tz/tz1LKpeN8ZSSFNyTWiBNaE4u4sjaq7J1Vz2z">marchingsquare</a>
-          (<a href="https://twitter.com/marchingsquare">@marchingsquare</a>).
-          <br>
-          Explorer: <a href="https://api.hicdex.com/graphiql">https://api.hicdex.com/graphiql</a>
-          <br>
-          Endpoint: <a href="https://api.hicdex.com/v1/graphql">https://api.hicdex.com/v1/graphql</a>
-        </p>
-      </div>
-    </footer>
+    <foot />
   </div>
 </template>
 
 <script>
+import Foot from './components/Foot.vue';
 import Nav from './components/Nav.vue';
 
 export default {
   name: 'App',
-  components: { Nav },
+  components: {
+    Foot,
+    Nav,
+  },
 };
 </script>

@@ -1,10 +1,18 @@
 <template>
   <div>
-    <h1 class="title is-spaced">Model</h1>
+    <h1 class="title is-spaced">Schema</h1>
+
+    <p class="content">
+      The main entities of the schema are listed below.
+      <br>
+      Rely on introspection / <a href="https://api.hicdex.com/graphiql">graphiql</a> to discover what fields and relations are available.
+    </p>
+
     <h2 class="subtitle"><code>hic_et_nunc_token</code></h2>
     <p class="content">
       The OBJKTs table.
     </p>
+
     <h2 class="subtitle"><code>hic_et_nunc_holder</code></h2>
     <p class="content">
       Wallets / HEN users.

@@ -77,6 +77,7 @@ export default {
             id: 'right-y-axis',
             position: 'right',
             type: 'linear',
+            stacked: true,
             scaleLabel: {
               display: true,
               labelString: '#sales',
