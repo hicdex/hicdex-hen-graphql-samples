@@ -1,17 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
-import SwapsOfMyWork from './views/SwapsOfMyWork.vue';
-import SwapsOfMyCollection from './views/SwapsOfMyCollection.vue';
-import CreatorGallery from './views/CreatorGallery.vue';
-import CollectorGallery from './views/CollectorGallery.vue';
-import PriceHistory from './views/PriceHistory.vue';
-import CreatorCollectors from './views/CreatorCollectors.vue';
-import Docs from './views/Docs.vue';
-import Sold from './views/Sold.vue';
-import Flip from './views/Flip.vue';
-import Objkt from './views/Objkt.vue';
-import Charts from './views/Charts.vue';
+import Docs from '@/views/Docs.vue';
+import Sold from '@/views/Sold.vue';
+import Flip from '@/views/Flip.vue';
+import Objkt from '@/views/Objkt.vue';
+import Charts from '@/views/Charts.vue';
+import Home from '@/views/Home.vue';
+import SwapsOfMyWork from '@/views/SwapsOfMyWork.vue';
+import SwapsOfMyCollection from '@/views/SwapsOfMyCollection.vue';
+import CreatorGallery from '@/views/CreatorGallery.vue';
+import CollectorGallery from '@/views/CollectorGallery.vue';
+import PriceHistory from '@/views/PriceHistory.vue';
+import CreatorCollectors from '@/views/CreatorCollectors.vue';
 
 Vue.use(Router);
 
