@@ -32,8 +32,7 @@
       ></b-image>-->
 
       <h3 class="subtitle is-4 mt-6">Swaps</h3>
-      <b-table
-        :data="objkt.swaps">
+      <b-table :data="swaps">
         <b-table-column field="timestamp" label="" sortable v-slot="props">
           {{ new Date(props.row.timestamp).toLocaleDateString() }} {{ new Date(props.row.timestamp).toLocaleTimeString() }}
         </b-table-column>
@@ -52,7 +51,7 @@
           {{ props.row.amount }}
         </b-table-column>
         <b-table-column field="sold" label="sold" numeric sortable v-slot="props">
-          {{ props.row.amount - props.row.amount_left }}
+          {{ props.row.sold}}
         </b-table-column>
         <b-table-column field="amount_left" label="left" numeric sortable v-slot="props">
           {{ props.row.amount_left }}
@@ -132,6 +131,12 @@
           .filter(([key, val]) => typeof val !== 'object' || key === 'extra' || key === 'token_tags')
           .filter(([key, _val]) => !key.startsWith('__'))
           .map(([key, val]) => ({ key, val }));
+      },
+      swaps() {
+        return this.objkt.swaps.map((swap) => {
+          swap.sold = swap.amount - swap.amount_left;
+          return swap;
+        });
       },
     },
   };
