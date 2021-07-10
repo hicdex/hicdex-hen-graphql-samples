@@ -132,7 +132,7 @@
                 </a> (by <a :href="twitterLink(list[n].twitter)">@{{ list[n].twitter }}</a>)
                 <br>
                 <em>
-                  relies on hicdex {{ list[n].description }}
+                  {{ list[n].description }}
                 </em>
                 <br>
                 <progress class="progress is-warning is-small" :value="((n/list.length * 100) + 3) % 100" max="100"></progress>
@@ -176,23 +176,47 @@ const list = [
   {
     url: 'https://hicetnunc.xyz',
     twitter: 'hicetnunc2000',
-    description: '',
-  }, {
+    description: 'is powered by hicdex',
+  },
+  {
     url: 'https://oncyber.io',
     twitter: 'oncyber_io',
-    description: 'to create 3D art galleries',
-  }, {
+    description: 'uses hicdex to create 3D art galleries',
+  },
+  {
+    url: 'https://www.bunnyknights.com',
+    twitter: 'BunnyKnights',
+    description: 'has a gallery powered by hicdex',
+  },
+  {
     url: 'https://glry.xyz/value',
     twitter: 'glryxyz',
-    description: 'to compute your collection appraisal',
-  }, {
+    description: 'uses hicdex to compute your collection appraisal',
+  },
+  {
     url: 'https://hennycomb.glitch.me',
     twitter: 'secondcass',
-    description: 'to show you the newest mints of your favorite artists',
-  }, {
-    url: 'https://www.objkt.bid',
-    twitter: 'NFTPROTECTOR',
-    description: 'to create an auction system for H=N',
+    description: 'relies on hicdex to show you the newest mints of your favorite artists',
+  },
+  {
+    url: 'https://objkt.com',
+    twitter: 'objktbid',
+    description: 'uses hicdex for its auction marketplace',
+  },
+  {
+    url: 'https://hen.radio',
+    twitter: '1x1_NFT',
+    description: 'is powered by hicdex',
+  },
+  {
+    url: 'https://hic.art',
+    twitter: '1x1_NFT',
+    description: 'relies on hicdex',
+  },
+  {
+    url: 'https://www.tezospirates.xyz/',
+    twitter: 'Flygohr',
+    description: 'is powered by hicdex',
   },
 ];
 
@@ -247,7 +271,7 @@ export default {
   mounted() {
     this.interval = setInterval(() => {
       this.n = (this.n + 1) % this.list.length;
-    }, 7000);
+    }, 3000);
   },
   beforeDestroy() {
     clearInterval(this.interval);
