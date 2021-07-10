@@ -54,7 +54,7 @@
                   <time :datetime="objkt.timestamp">{{ new Date(objkt.timestamp).toLocaleDateString() }} {{ new Date(objkt.timestamp).toLocaleTimeString() }}</time>
                 </code>
 
-                <b-field>
+                <b-field class="tags">
                   <b-tag rounded v-for="{tag} in objkt.token_tags" :key="tag.tag">
                     {{ tag.tag }}
                   </b-tag>
