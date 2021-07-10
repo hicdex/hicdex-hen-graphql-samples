@@ -10,6 +10,7 @@
     <b-tabs v-model="filterStatus">
       <template v-for="filter in filters">
         <b-tab-item
+          v-if="objkt || filter.label !== 'Query'"
           :key="filter.value"
           :value="filter.value"
           :label="filter.label">
@@ -17,7 +18,8 @@
       </template>
     </b-tabs>
 
-    <Objkt v-show="filterStatus !== 'query'"
+    <div v-if="!objkt">Enter an OBJKT id above</div>
+    <Objkt v-show="objkt && filterStatus !== 'query'"
       :objkt="hen"
       :ask="ask"
       :english="english"
@@ -198,6 +200,7 @@ export default {
       objkt: undefined,
       filterStatus: 'all',
       hic_et_nunc_token_by_pk: {},
+      dutch: [],
       error: null,
       filters: [
         { label: 'Objkt', value: 'all' },
