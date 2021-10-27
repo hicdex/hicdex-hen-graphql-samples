@@ -184,6 +184,16 @@ const list = [
     description: 'uses hicdex to create 3D art galleries',
   },
   {
+    url: 'https://hic.af',
+    twitter: 'gwendall',
+    description: 'relies on hicdex',
+  },
+  {
+    url: 'https://www.henext.xyz',
+    twitter: 'HenextXyz',
+    description: 'relies on hicdex',
+  },
+  {
     url: 'https://www.bunnyknights.com',
     twitter: 'BunnyKnights',
     description: 'has a gallery powered by hicdex',
@@ -199,13 +209,8 @@ const list = [
     description: 'relies on hicdex to show you the newest mints of your favorite artists',
   },
   {
-    url: 'https://objkt.com',
-    twitter: 'objktbid',
-    description: 'uses hicdex for its auction marketplace',
-  },
-  {
     url: 'https://hen.radio',
-    twitter: '1x1_NFT',
+    twitter: '__orderandchaos',
     description: 'is powered by hicdex',
   },
   {
