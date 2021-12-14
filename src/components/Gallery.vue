@@ -90,7 +90,7 @@
     },
     methods: {
       link(id) {
-        return `https://www.hicetnunc.xyz/objkt/${id}`;
+        return `https://hicetnunc.art/objkt/${id}`;
       },
       img(objkt) {
         let ipfsUrl = objkt.display_uri || objkt.artifact_uri;

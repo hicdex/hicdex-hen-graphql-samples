@@ -329,7 +329,7 @@ export default {
   },
   methods: {
     link(addr) {
-      return `https://www.hicetnunc.xyz/tz/${addr}`;
+      return `https://hicetnunc.art/tz/${addr}`;
     },
     img(ipfsUrl) {
       const matched = ipfsUrl.match(/ipfs:\/\/(.*)/);
@@ -344,7 +344,7 @@ export default {
       return `https://objkt.com/o/${this.objkt.id}`;
     },
     henObjkt() {
-      return `https://www.hicetnunc.xyz/objkt/${this.objkt.id}`;
+      return `https://hicetnunc.art/objkt/${this.objkt.id}`;
     },
     properties() {
       return Object.entries(this.objkt)

@@ -26,7 +26,7 @@
     mounted() {},
     methods: {
       link(addr) {
-        return `https://www.hicetnunc.xyz/tz/${addr}`;
+        return `https://hicetnunc.art/tz/${addr}`;
       },
     },
   };

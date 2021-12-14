@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     link(addr) {
-      return `https://www.hicetnunc.xyz/tz/${addr}`;
+      return `https://hicetnunc.art/tz/${addr}`;
     },
     name(obj) {
       if (obj.name) {

@@ -121,7 +121,7 @@
 
               <p>
                 You can also
-                <a style="text-decoration: underline !important;" href="https://www.hicetnunc.xyz/tz/tz1LKpeN8ZSSFNyTWiBNaE4u4sjaq7J1Vz2z" target="_blank">
+                <a style="text-decoration: underline !important;" href="https://hicetnunc.art/tz/tz1LKpeN8ZSSFNyTWiBNaE4u4sjaq7J1Vz2z" target="_blank">
                 buy some generative art</a>,
                 although my artistic output dropped dramatically with all the time dedicated to hicdex.
               </p>

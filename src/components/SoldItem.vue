@@ -48,10 +48,10 @@
     mounted() {},
     methods: {
       link(id) {
-        return `https://www.hicetnunc.xyz/objkt/${id}`;
+        return `https://hicetnunc.art/objkt/${id}`;
       },
       addrLink(id) {
-        return `https://www.hicetnunc.xyz/tz/${id}`;
+        return `https://hicetnunc.art/tz/${id}`;
       },
       statusText(statusId) {
         const statuses = {
